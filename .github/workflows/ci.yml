@@ -1,0 +1,228 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a job called "build"
+  init:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    outputs:
+      LANGUAGE_NAME: ${{ steps.get-values.outputs.LANGUAGE_NAME }}
+      PROJECT_NAME: ${{ steps.get-values.outputs.PROJECT_NAME }}
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v2.0.0
+
+      - name: Get Language & project name
+        id: get-values
+        run: |
+          echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep '/' | cut -f 1 -d "/" |uniq`"
+          echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' |grep '/' | cut -f 2 -d "/" |uniq`"
+
+      - name: echo Language & project name
+        run: echo ${{ steps.get-values.outputs.LANGUAGE_NAME }} ${{ steps.get-values.outputs.PROJECT_NAME }}
+
+  build-scala:
+    needs: init
+    runs-on: ubuntu-latest
+    if: needs.init.outputs.LANGUAGE_NAME == 'scala'
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        
+    steps:
+
+      - uses: actions/checkout@v2
+
+      - name: Checkout submodules
+        uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+      - name: check env
+        run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
+        
+      - name: check build tool
+        id: build-tool
+        run:  |
+              echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
+                  echo "sbt"
+              elif [ -f "build.gradle" ]
+              then
+                  echo "gradle"
+              elif [ -f "pom.xml" ]
+              then
+                  echo "maven"
+              elif [ -f "build.xml" ]
+              then
+                  echo "ant"
+              else 
+                  echo "scalac"
+              fi`"
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Build with sbt
+        if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
+        run: sbt clean test
+
+      - name: Build with maven
+        if: steps.build-tool.outputs.TOOL_NAME == 'maven'
+        run: mvn package
+
+      - name: Validate Gradle wrapper
+        if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
+      - name: Build with gradle
+        if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
+        run: ./gradlew build
+
+      - name: Build with ant
+        if: steps.build-tool.outputs.TOOL_NAME == 'ant'
+        run: ant -noinput -buildfile build.xml
+
+      - name: Build with scalac
+        if: steps.build-tool.outputs.TOOL_NAME == 'scalac'
+        run: |
+            sudo apt install scala -y
+            scalac *.scala
+            
+  build-java:
+    needs: init
+    runs-on: ubuntu-latest
+    if: needs.init.outputs.LANGUAGE_NAME == 'java'
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+    steps:
+
+      - uses: actions/checkout@v2
+      
+      - name: Checkout submodules
+        uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+
+      - name: check build tool
+        id: build-tool
+        run: |
+            echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
+                echo "sbt"
+            elif [ -f "build.gradle" ]
+            then
+                echo "gradle"
+            elif [ -f "pom.xml" ]
+            then
+                echo "maven"
+            elif [ -f "build.xml" ]
+            then
+                echo "ant"
+            else 
+                echo "javac"
+            fi`"
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      - name: Build with sbt
+        if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
+        run: sbt clean test
+
+      - name: Build with maven
+        if: steps.build-tool.outputs.TOOL_NAME == 'maven'
+        run: mvn package
+
+      - name: Validate Gradle wrapper
+        if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
+      - name: Build with gradle
+        if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
+        run: ./gradlew build
+
+      - name: Build with ant
+        if: steps.build-tool.outputs.TOOL_NAME == 'ant'
+        run: ant -noinput -buildfile build.xml
+
+      - name: Build with javac
+        if: steps.build-tool.outputs.TOOL_NAME == 'javac'
+        run: javac src/*.java -d classes
+
+  build-angular:
+    needs: init
+    runs-on: ubuntu-latest
+    if: needs.init.outputs.LANGUAGE_NAME == 'angular'
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+    steps:
+
+      - uses: actions/checkout@v2
+      
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build with npm
+        run: npm run build
+        
+  sonarqube:
+    needs: [build-angular, build-scala, build-java, init]
+    if: |
+      !failure() && !cancelled() && 
+      (success('build-angular') || success('build-scala')) || (success('build-java')) 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        # Disabling shallow clone is recommended for improving relevancy of reporting
+        fetch-depth: 0
+    - name: SonarQube Scan
+      uses: sonarsource/sonarqube-scan-action@master
+      with:
+        args: >
+          -Dsonar.organization=Knoldus
+          -Dsonar.projectKey=${{needs.init.outputs.PROJECT_NAME}}
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      
+
