@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 [submodule "java/java1"]
 	path = java/java1
 	url = git@github.com:yamikarajput546/TJava.git
 [submodule "java/JAVA/Library"]
 	path = java/JAVA/Library
 	url = https://github.com/yamikarajput546/java-Library.git
+=======
+[submodule "java/java-Library"]
+	path = java/java-Library
+	url = git@github.com:yamikarajput546/java-Library.git
+>>>>>>> 1ca8646e905f265284fc675a80d401569e7c5423
