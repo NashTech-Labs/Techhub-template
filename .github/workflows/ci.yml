@@ -39,7 +39,6 @@ jobs:
         run: |
           echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep '/' | cut -f 1 -d "/" |uniq`"
           echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' |grep '/' | cut -f 2 -d "/" |uniq`"
-
       - name: echo Language & project name
         run: echo ${{ steps.get-values.outputs.LANGUAGE_NAME }} ${{ steps.get-values.outputs.PROJECT_NAME }}
 
@@ -80,7 +79,6 @@ jobs:
               else 
                   echo "scalac"
               fi`"
-
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -89,8 +87,9 @@ jobs:
 
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
-        run: sbt clean test
-
+        run: |
+              ls
+              sbt clean test
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
         run: mvn package
@@ -147,7 +146,6 @@ jobs:
             else 
                 echo "javac"
             fi`"
-
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
@@ -190,6 +188,11 @@ jobs:
 
       - uses: actions/checkout@v2
       
+      - name: Checkout submodules
+        uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+      
       - name: Setup node
         uses: actions/setup-node@v2
         with:
@@ -210,19 +213,25 @@ jobs:
     defaults:
       run:
         working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        
     steps:
-    - uses: actions/checkout@v2
-      with:
-        # Disabling shallow clone is recommended for improving relevancy of reporting
-        fetch-depth: 0
-    - name: SonarQube Scan
-      uses: sonarsource/sonarqube-scan-action@master
-      with:
-        args: >
-          -Dsonar.organization=Knoldus
-          -Dsonar.projectKey=${{needs.init.outputs.PROJECT_NAME}}
-      env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      
+    
+      - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
 
+      - name: Checkout submodules
+        uses: srt32/git-actions@v0.0.3
+        with:
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.organization=Knoldus
+            -Dsonar.projectKey=${{needs.init.outputs.PROJECT_NAME}}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
