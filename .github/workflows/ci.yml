@@ -113,7 +113,7 @@ jobs:
             sudo apt install scala -y
             scalac *.scala
             
-  build-java:
+  build-java: #h
     needs: init
     runs-on: ubuntu-latest
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
