@@ -152,7 +152,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '11'
-          distribution: 'zulu'
+          distribution: 'adopt'
 
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
@@ -176,7 +176,7 @@ jobs:
 
       - name: Build with javac
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
-        run: javac src/*.java -d classes
+        run: java -cp java HelloWorldApp # javac src/*.java -d classes
 
   build-angular:
     needs: init
