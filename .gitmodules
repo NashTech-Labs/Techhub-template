@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 [submodule "scala/TScala"]
 	path = scala/TScala
 	url = https://github.com/yamikarajput546/TScala.git
-=======
-[submodule "scala/scala3"]
-	path = scala/scala3
-	url = https://github.com/yamikarajput546/scala3.git
 
->>>>>>> 6ec1a5f29b9abb7fd7e7de367749b87b3a921faf
