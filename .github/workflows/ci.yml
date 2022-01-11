@@ -89,7 +89,9 @@ jobs:
 
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
-        run: sbt clean test
+        run: |
+              ls
+              sbt clean test
 
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
