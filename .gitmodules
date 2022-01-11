@@ -1,3 +1,4 @@
 [submodule "scala/scala3"]
 	path = scala/scala3
 	url = https://github.com/yamikarajput546/scala3.git
+
