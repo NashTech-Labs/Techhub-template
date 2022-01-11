@@ -225,7 +225,7 @@ jobs:
       - name: Checkout submodules
         uses: srt32/git-actions@v0.0.3
         with:
-          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
@@ -236,3 +236,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    
