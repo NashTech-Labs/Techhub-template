@@ -90,6 +90,7 @@ jobs:
         run: |
               ls
               sbt clean test
+
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
         run: mvn package
@@ -224,7 +225,7 @@ jobs:
       - name: Checkout submodules
         uses: srt32/git-actions@v0.0.3
         with:
-          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
