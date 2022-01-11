@@ -174,9 +174,9 @@ jobs:
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
         run: ant -noinput -buildfile build.xml
 
-      - name: Build with javac
-        if: steps.build-tool.outputs.TOOL_NAME == 'javac'
-        run: javac src/*.java -d classes
+      # - name: Build with javac
+      #   if: steps.build-tool.outputs.TOOL_NAME == 'javac'
+      #   run: javac src/*.java -d classes
 
   build-angular:
     needs: init
