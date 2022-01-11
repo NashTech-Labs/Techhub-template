@@ -176,7 +176,7 @@ jobs:
 
       - name: Build with javac
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
-        run: javac Run.java 
+        run: javac ./Run.java 
 
   build-angular:
     needs: init
