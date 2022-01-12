@@ -1,3 +1,3 @@
-[submodule "angular/cockpit-frontend"]
-	path = angular/cockpit-frontend
-	url = https://github.com/NehaK275/cockpit-frontend.git
+[submodule "angular/angular"]
+	path = angular/angular
+	url = https://github.com/NehaK275/angular.git
