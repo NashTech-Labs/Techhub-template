@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ feature/java-gradle ]
+    branches: [ main ]
   pull_request:
-    branches: [ feature/java-gradle]
+    branches: [ main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -151,9 +151,18 @@ jobs:
 
 
 
-      - name: Get jave version
+      - name: Get java version
         id: java-version
-        run: cat java_version.txt
+        run: |
+           echo '::set-output name=JAVA_VERSION::
+           cat java_version.txt'
+
+      - name: Set up JDK 8
+        if: steps.java-version.outputs.JAVA_VERSION == '8'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
 
       - name: Set up JDK 11
         if: steps.java-version.outputs.JAVA_VERSION == '11'
@@ -161,13 +170,15 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-          
-      - name: Set up JDK 8
-        if: steps.java-version.outputs.JAVA_VERSION == '8'
+
+       - name: Set up JDK 13
+        if: steps.java-version.outputs.JAVA_VERSION == '13'
         uses: actions/setup-java@v2
         with:
-          java-version: '8'
+          java-version: '13'
           distribution: 'adopt'
+          
+      
 
       
 
