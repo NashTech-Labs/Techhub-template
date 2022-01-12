@@ -122,7 +122,6 @@ jobs:
         working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
     steps:
-
       - uses: actions/checkout@v2
       
       - name: Checkout submodules
@@ -148,9 +147,6 @@ jobs:
                 echo "javac"
             fi`"
       
-
-
-
       - name: Get java version
         id: java-version
         run: |
