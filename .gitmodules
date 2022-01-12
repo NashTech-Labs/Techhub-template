@@ -1,3 +1,9 @@
 [submodule "java/java1"]
 	path = java/java1
 	url = git@github.com:yamikarajput546/TJava.git
+[submodule "tech_temp"]
+	path = tech_temp
+	url = https://github.com/knoldus/tech_temp.git
+[submodule "java/tech_temp"]
+	path = java/tech_temp
+	url = https://github.com/knoldus/tech_temp.git
