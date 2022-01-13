@@ -1,3 +1,4 @@
-[submodule "angular/angular"]
-	path = angular/angular
+
+[submodule "angular/angular1"]
+	path = angular/angular1
 	url = https://github.com/NehaK275/angular.git
