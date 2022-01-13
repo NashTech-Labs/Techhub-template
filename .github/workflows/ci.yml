@@ -161,12 +161,20 @@ jobs:
 
       
 
-      - name: Set up JDK 11
-        if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '11'
+      - name: Set up JDK 
+        if: ${{ steps.java-version.outputs.TOOL_NAME }} == 'gradle'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+
+        if: ${{ steps.java-version.outputs.TOOL_NAME }} != 'gradle'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
+        
+
 
       
 
@@ -184,10 +192,6 @@ jobs:
 
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
-        uses: actions/setup-java@v2
-        with:
-          java-version: '8'
-          distribution: 'adopt'
         run: ./gradlew build
 
       - name: Build with ant
