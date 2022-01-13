@@ -152,11 +152,12 @@ jobs:
       - name: Get java version
         id: java-version
         run: |
+           cat java-version.txt
            echo '::set-output name=JAVA_VERSION::
             cat java-version.txt'
         continue-on-error: true
         if: steps.java-version.outcome != 'success'
-           ${{steps.java-version.outputs.JAVA_VERSION}} = ${{ env.java_version }}
+           ${{ steps.java-version.outputs.JAVA_VERSION }} = ${{ env.java_version }}
 
 
       - name: Set up JDK 8
