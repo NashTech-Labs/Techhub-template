@@ -1,4 +1,4 @@
 
-[submodule "java/java-gradle"]
-	path = java/java-gradle
+[submodule "java/java-gradle-1"]
+	path = java/java-gradle-1
 	url = https://github.com/yamikarajput546/java-gradle.git
