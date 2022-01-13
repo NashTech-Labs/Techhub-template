@@ -20,16 +20,10 @@ Step 3 - You have to create a directory in your newly created branch.
 For example
 </br>
 a. java for Java Application 
-
-</br>
-	```mkdir java```
-</br>    
+    ```mkdir java```    
 b. scala for Scala Application
-</br> 
-    ```mkdir scala```
-</br>    
+    ```mkdir scala```    
 c. angular for Angular Application
-</br>
     ```mkdir angular```
   	
 Step 4 - Now, create a submodule under this directory.
