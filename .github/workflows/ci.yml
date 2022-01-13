@@ -115,9 +115,9 @@ jobs:
   build-java:
     needs: init
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        java-version: [ 8, 11, 15 ]
+    # strategy:
+    #   matrix:
+    #     java-version: [ 8, 11, 15 ]
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
     defaults:
       run:
@@ -152,25 +152,36 @@ jobs:
 
       
     
-      # - name: Get java version
-      #   id: java-version
-      #   run: |
-      #      echo '::set-output name=JAVA_VERSION::
-      #      cat java_version.txt'
+      - name: Get java version
+        id: java-version
+        run: |
+           echo '::set-output name=JAVA_VERSION::
+           cat java_version.txt'
 
-      # - name: Set up JDK 8
-      #   if: steps.java-version.outputs.JAVA_VERSION == '8'
-      #   uses: actions/setup-java@v2
-      #   with:
-      #     java-version: '8'
-      #     distribution: 'adopt'
-
-      - name: Set up JDK 
-        # if: steps.java-version.outputs.JAVA_VERSION == '11'
-        uses: actions/setup-java@v1
+      - name: Set up JDK 8
+        if: steps.java-version.outputs.JAVA_VERSION == '8'
+        uses: actions/setup-java@v2
         with:
-          java-version: ${{ matrix.java-version }}
-          # distribution: 'adopt'
+          java-version: '8'
+          distribution: 'adopt'
+
+      - name: Set up JDK 11
+        if: steps.java-version.outputs.JAVA_VERSION == '11'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+
+
+
+
+      # - name: Set up JDK 
+      #   # if: steps.java-version.outputs.JAVA_VERSION == '11'
+      #   uses: actions/setup-java@v1
+      #   with:
+      #     java-version: ${{ matrix.java-version }}
+      #     # distribution: 'adopt'
 
       #  - name: Set up JDK 13
       #   if: steps.java-version.outputs.JAVA_VERSION == '13'
