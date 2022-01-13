@@ -160,13 +160,13 @@ jobs:
 
 
       
-      - name: Set up JDK 
-        if: steps.java-version.outputs.TOOL_NAME != 'gradle'
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
-          
+      # - name: Set up JDK 
+      #   if: steps.java-version.outputs.TOOL_NAME != 'gradle'
+      #   uses: actions/setup-java@v2
+      #   with:
+      #     java-version: '11'
+      #     distribution: 'adopt'
+
       - name: Set up JDK 
         if: steps.java-version.outputs.TOOL_NAME == 'gradle'
         uses: actions/setup-java@v2
