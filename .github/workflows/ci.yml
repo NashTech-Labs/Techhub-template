@@ -116,7 +116,7 @@ jobs:
     needs: init
     runs-on: ubuntu-latest
     env:
-      java_version: 11
+      java_version: 8
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
     defaults:
       run:
@@ -153,9 +153,9 @@ jobs:
         id: java-version
         run: | 
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
-        # continue-on-error: true
-        # if: steps.java-version.outcome != 'success'
-        #    ${{ steps.java-version.outputs.JAVA_VERSION }} = ${{ env.java_version }}
+        continue-on-error: true
+        if: steps.java-version.outcome != 'success'
+           ${{ steps.java-version.outputs.JAVA_VERSION }} = ${{ env.java_version }}
 
 
       - name: Set up JDK 8
