@@ -1,7 +1,5 @@
 
-[submodule "angular/angular1"]
-	path = angular/angular1
-	url = https://github.com/NehaK275/angular.git
 [submodule "npm/npm"]
 	path = npm/npm
 	url = https://github.com/NehaK275/npm.git
+
