@@ -149,22 +149,17 @@ jobs:
                 echo "javac"
             fi`"
 
-      - name: Get java version
-        id: java-version
-        run: | 
-            echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`"
-            echo ${{ steps.java-version.outputs.JAVA_VERSION }}
-        # continue-on-error: true
-        # if: steps.java-version.outcome != 'success'
-        #    ${{ steps.java-version.outputs.JAVA_VERSION }} = ${{ env.java_version }}
+      # - name: Get java version
+      #   id: java-version
+      #   run: | 
+      #       echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`"
+      #       echo ${{ steps.java-version.outputs.JAVA_VERSION }}
+      #   # continue-on-error: true
+      #   # if: steps.java-version.outcome != 'success'
+      #   #    ${{ steps.java-version.outputs.JAVA_VERSION }} = ${{ env.java_version }}
 
 
-      - name: Set up JDK 8
-        if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '8'
-        uses: actions/setup-java@v2
-        with:
-          java-version: '8'
-          distribution: 'adopt'
+      
 
       - name: Set up JDK 11
         if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '11'
@@ -173,12 +168,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-      - name: Set up JDK 16
-        if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '16'
-        uses: actions/setup-java@v2
-        with:
-          java-version: '16'
-          distribution: 'adopt'
+      
 
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
@@ -194,6 +184,10 @@ jobs:
 
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
         run: ./gradlew build
 
       - name: Build with ant
