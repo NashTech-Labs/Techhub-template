@@ -1,4 +1,4 @@
 
-[submodule "ant/JavaAnt"]
-	path = ant/JavaAnt
+[submodule "java/JavaAnt"]
+	path = java/JavaAnt
 	url = https://github.com/yamikarajput546/JavaAnt.git
