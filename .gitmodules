@@ -1,4 +1,4 @@
 
-[submodule "java/java-gradle-1"]
-	path = java/java-gradle-1
-	url = https://github.com/yamikarajput546/java-gradle.git
+[submodule "scala/scala-with-gradle"]
+	path = scala/scala-with-gradle
+	url = https://github.com/Shubham-Gupta3197/scala-with-gradle.git
