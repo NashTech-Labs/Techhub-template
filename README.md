@@ -20,15 +20,21 @@ Step 3 - You have to create a directory in your newly created branch.
 For example
 </br>
 a. java for Java Application 
-    ```mkdir java```    
+</br>
+
+  ```mkdir java && cd java```    
 b. scala for Scala Application
-    ```mkdir scala```    
+</br>
+
+  ```mkdir scala && cd scala```    
 c. angular for Angular Application
-    ```mkdir angular```
+</br>
+
+  ```mkdir angular && cd angular```
   	
 Step 4 - Now, create a submodule under this directory.
 </br>
-	```git submodule add <Your repo URL, where you have uploaded you template>```
+	```git submodule add <Your template repository URL>```
 	
 Step 5 - Push your changes to the code.
 </br>
@@ -53,7 +59,7 @@ Step 7 - Now, Click on git Actions to check your build.
 2. Gradle
 3. SBT
 
-#### As of now we are using JDK Version 11 as default. If you want to use another version of java you will required to create a file named as :-
+#### Note:- As of now we are using JDK Version 11 as default. If you want to use another version of java you will required to create a file named as :-
 
 ```cat >java-version.txt```
 </br>
