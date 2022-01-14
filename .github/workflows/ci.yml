@@ -191,7 +191,10 @@ jobs:
 
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
-        run: ./gradlew build
+        run: |
+            ./gradlew clean
+            ./gradlew test build
+
 
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
