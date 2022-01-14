@@ -119,7 +119,7 @@ jobs:
     needs: init
     runs-on: ubuntu-latest
     env:
-      java_version: '11'
+      java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
     defaults:
       run:
