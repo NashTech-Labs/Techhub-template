@@ -56,11 +56,10 @@ Step 7 - Now, Click on git Actions to check your build.
 #### As of now we are using JDK Version 11 as default. If you want to use another version of java you will required to create a file named as :-
 
 ```cat >java-version.txt```
-
 </br>
 
 ```8```
-#### Now save the changes and whatever jdk version you want to use mention mention in java-version.txt as shown above like 8, Nothing else.
+#### Now save the changes and whatever jdk version you want to use, mention in ```java-version.txt``` file as shown above like 8, Nothing else.
 
 ### You can use the following jdk versions
 8
