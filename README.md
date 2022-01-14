@@ -16,7 +16,7 @@ Step 2 - Create & Checkout to new branch using
 </br>
   ```git checkout -b <branchname> ```
   
-Step 3 - You have to create a directory in your newly created branch. 
+Step 3 - You have to create a directory in your newly created branch and . 
 For example
 </br>
 a. java for Java Application 
@@ -68,15 +68,19 @@ Step 7 - Now, Click on git Actions to check your build.
 #### Now save the changes and whatever jdk version you want to use, mention in ```java-version.txt``` file as shown above like 8, Nothing else.
 
 ### You can use the following jdk versions
-8
+```8```
 </br>
-11
+
+```11```
 </br>
-13
+
+```13```
 </br>
-15
+
+```15```
 </br>
-17
+
+```17```
 
 ### You've to fullfil the criteria to merge a Pull Request
 1. Make sure ```init job``` should be running successfully.
