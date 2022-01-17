@@ -133,6 +133,7 @@ jobs:
           repository: yamikarajput546/TJava
           token: ${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains your PAT
           permissions:
+            id-token: write
             contents: read
           path: java/TJavaPriv
           ref: ${{ github.head_ref }}
