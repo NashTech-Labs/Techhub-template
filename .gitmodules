@@ -1,6 +1,4 @@
-[submodule "java/java1"]
-	path = java/java1
-	url = git@github.com:yamikarajput546/TJava.git
+
 [submodule "java/j1"]
 	path = java/j1
 	url = https://github.com/MukeshAtGit/Sample-maven-app.git
