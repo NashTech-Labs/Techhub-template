@@ -1,4 +1,4 @@
 
-[submodule "java/Tjava-Private"]
-	path = java/Tjava-Private
-	url = git@github.com:yamikarajput546/TJava.git
+[submodule "java/TJAva"]
+	path = java/TJAva
+	url = https://github.com/yamikarajput546/TJava.git
