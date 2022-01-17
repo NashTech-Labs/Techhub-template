@@ -130,12 +130,19 @@ jobs:
           ref: ${{ github.head_ref }}
 
 
+<<<<<<< HEAD
       - name: check build tool
         run: |
               cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
               ls
 
 
+=======
+      # - name: check build tool
+      #   run: |
+      #         cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+      #         ls
+>>>>>>> bbcb0b9fcd528baad949292613517547beb01e0f
       
       - name: check build tool
         id: build-tool
