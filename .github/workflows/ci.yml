@@ -54,6 +54,17 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2  # This action checks-out the repository
+      
+      - name: Checkout submodule
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update .
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
 
       - name: check env   # Name of the step to be perform
         run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
@@ -114,6 +125,9 @@ jobs:
     env:
       java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
 
     steps:
 
@@ -125,8 +139,8 @@ jobs:
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
           git submodule init
-          git submodule update ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
-
+          git submodule update .
+          
       - name: checkcheck Dir
         run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
       
@@ -251,12 +265,15 @@ jobs:
           fetch-depth: 0
           
       - name: Checkout submodule
-        uses: actions/checkout@v2.0.0
-        with:
-          token: '${{ secrets.GITHUB_READ }}'
-          repository: knoldus/Techhub-template
-          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-          ref: 'master'
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update .
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
