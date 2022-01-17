@@ -55,11 +55,6 @@ jobs:
 
       - uses: actions/checkout@v2  # This action checks-out the repository
 
-      - name: Checkout submodules # Name of the step to be perform
-        uses: srt32/git-actions@v0.0.3
-        with:
-          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-
       - name: check env   # Name of the step to be perform
         run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
         
@@ -127,6 +122,7 @@ jobs:
 
       - uses: actions/checkout@v2
       
+
       - name: Checkout  private submodules
         uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
         with:
@@ -221,10 +217,13 @@ jobs:
 
       - uses: actions/checkout@v2
       
-      - name: Checkout submodules
-        uses: srt32/git-actions@v0.0.3
+      - name: Checkout submodule
+        uses: actions/checkout@v2.0.0
         with:
-          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+          token: '${{ secrets.GITHUB_READ }}'
+          repository: knoldus/Techhub-template
+          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          ref: 'master'
       
       - name: Setup node
         uses: actions/setup-node@v2
@@ -253,11 +252,14 @@ jobs:
         with:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0
-
-      - name: Checkout submodules
-        uses: srt32/git-actions@v0.0.3
+          
+      - name: Checkout submodule
+        uses: actions/checkout@v2.0.0
         with:
-          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          token: '${{ secrets.GITHUB_READ }}'
+          repository: knoldus/Techhub-template
+          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          ref: 'master'
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
