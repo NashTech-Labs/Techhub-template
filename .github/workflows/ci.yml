@@ -118,16 +118,14 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-        with:
-          token: '${{ secrets.GITHUB_TOKEN }}'
-          submodules: recursive
       
       - name: Checkout submodule
-        uses: actions/checkout@v2.0.0
-        with:
-          token: '${{ secrets.GITHUB_TOKEN }}'
-          repository: knoldus/Techhub-template
-          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.GITHUB_TOKEN }}:${{ secrets.GITHUB_TOKEN }}@github.com\//")
+          done
+          git submodule init
+          git submodule update ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
 
       - name: checkcheck Dir
         run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
