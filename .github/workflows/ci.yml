@@ -125,7 +125,7 @@ jobs:
       - name: Checkout submodule
         uses: actions/checkout@v2.0.0
         with:
-          token: '${{ secrets.GITHUB_READ }}'
+          token: '${{ secrets.GITHUB_TOKEN }}'
           repository: knoldus/Techhub-template
           path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
           ref: 'master' 
@@ -217,7 +217,7 @@ jobs:
       - name: Checkout submodule
         uses: actions/checkout@v2.0.0
         with:
-          token: '${{ secrets.GITHUB_READ }}'
+          token: '${{ secrets.GITHUB_TOKEN }}'
           repository: knoldus/Techhub-template
           path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
           ref: 'master'
