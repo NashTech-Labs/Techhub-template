@@ -130,6 +130,7 @@ jobs:
       - name: Checkout  private submodules
         uses: actions/checkout@a81bbbf8298c0fa03ea29cdc473d45769f953675
         with:
+          lfs: true
           repository: yamikarajput546/TJava
           token: ${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains PAT
           path: java/TJavaPriv
