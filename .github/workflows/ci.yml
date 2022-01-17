@@ -135,7 +135,7 @@ jobs:
           path: java/TJavaPriv
           ref: ${{ github.head_ref }}
         permissions:
-          contents: read
+        contents: read
 
       - name: check build tool
         id: build-tool
