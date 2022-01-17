@@ -121,7 +121,7 @@ jobs:
       
 
       - name: Checkout  private submodules
-        uses: actions/checkout@v2
+        uses: srt32/git-actions@v0.0.3
         with:
           #lfs: true
           repository: yamikarajput546/TJava
