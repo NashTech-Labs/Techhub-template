@@ -265,7 +265,7 @@ jobs:
     
       - uses: actions/checkout@v2
         with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
+          # Disabling shallow clone is recommended for improving relevancy of reporting huuuh
           fetch-depth: 0
 
       - name: Checkout submodules
