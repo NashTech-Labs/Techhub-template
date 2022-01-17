@@ -114,9 +114,6 @@ jobs:
     env:
       java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
-    defaults:
-      run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
     steps:
 
@@ -131,10 +128,12 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN || github.token}} #${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains PAT
           path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
           ref: ${{ github.head_ref }}
-          
 
-
-
+      - name: check build tool
+        run: |
+              cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+              ls
+      
       - name: check build tool
         id: build-tool
         run: |
