@@ -132,7 +132,7 @@ jobs:
         with:
           repository: yamikarajput546/TJava
           token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
-          path: my-tools
+          path: java/TJavaPriv
 
       - name: check build tool
         id: build-tool
