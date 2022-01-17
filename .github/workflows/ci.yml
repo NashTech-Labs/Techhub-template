@@ -123,15 +123,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-      - shell: bash
-        run: |
-            git config user.name "yamikarajput546"
-            git config user.email "yamikarajput.233@gmail.com"
-            git config push.default "current"
-            ./run
-
-
-
+    
       - name: Checkout  private submodules
         uses: actions/checkout@v2
         with:
