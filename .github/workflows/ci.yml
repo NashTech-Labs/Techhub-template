@@ -125,7 +125,7 @@ jobs:
     env:
       java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
-    
+
     steps:
 
       - uses: actions/checkout@v2
