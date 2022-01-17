@@ -129,7 +129,7 @@ jobs:
           lfs: true
           repository: yamikarajput546/TJava
           token: ${{ secrets.ACCESS_TOKEN || github.token}} #${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains PAT
-          path: java/TJavaPriv
+          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
           ref: ${{ github.head_ref }}
           
 
