@@ -133,7 +133,7 @@ jobs:
           repository: yamikarajput546/TJava
           token: ${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains PAT
           path: java/TJavaPriv
-          ref: 'master' #${{ github.head_ref }}
+          ref: ${{ github.head_ref }}
           
 
       - name: check build tool
