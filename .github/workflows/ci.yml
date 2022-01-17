@@ -131,9 +131,9 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: yamikarajput546/TJava
-          token: '${{ secrets.GH_PAT }}' # `GH_PAT` is a secret that contains your PAT
+          token: ${{ secrets.GH_PAT }} # `GH_PAT` is a secret that contains your PAT
           path: java/TJavaPriv
-          ref: 'master'
+          ref: ${{ github.head_ref }}
 
       - name: check build tool
         id: build-tool
