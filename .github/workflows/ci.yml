@@ -125,10 +125,9 @@ jobs:
           token: '${{ secrets.GITHUB_TOKEN }}'
           repository: knoldus/Techhub-template
           path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-          ref: 'main' 
 
       - name: checkcheck Dir
-        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && ls
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
       
       - name: check build tool
         id: build-tool
