@@ -125,16 +125,13 @@ jobs:
     env:
       java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
-    defaults:
-      run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
-
+    
     steps:
 
       - uses: actions/checkout@v2
       
       - name: Checkout submodule
-        working-directory: ../..
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
         run: |
           git config --file .gitmodules --get-regexp url | while read url; do
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
@@ -147,6 +144,7 @@ jobs:
       
       - name: check build tool
         id: build-tool
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
         run: |
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
@@ -165,6 +163,7 @@ jobs:
 
       - name: Get java version
         id: java-version
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
         run: |
            echo '::set-output name=JAVA_VERSION::
             cat java-version.txt'
@@ -206,6 +205,7 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
       - name: Build with gradle
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         run: ./gradlew build
 
