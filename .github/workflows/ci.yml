@@ -156,12 +156,7 @@ jobs:
             else
                 echo "notxt"
             fi`"
-            
-
-
-    
-          
-
+         
       - name: file present
         id: java-version 
         if: steps.pn.outputs.FILE == 'txt'
@@ -176,22 +171,6 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-
-
-      # - name: Get java version
-      #   id: java-version
-      #   run: |
-      #       echo "::set-output name=JAVA_VERSION::$(cat java-version.txt) || ${{ env.java_version }}" 
-            
-      #   # run: | 
-      #   #     echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >> ${{ env.java_version }}
-            
-      #   continue-on-error: true
-      #   if: steps.java-version.outputs.JAVA_VERSION == ''    {{}}    
-      #     $(( steps.java-version.outputs.JAVA_VERSION )) = ${{ env.java_version }}
-      
-
-
 
       - name: Set up JDK 8
         if: steps.java-version.outputs.JAVA_VERSION == '8'
