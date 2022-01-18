@@ -153,9 +153,8 @@ jobs:
       - name: Get java version
         id: java-version
         run: |
-            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" 
-            echo "steps.java-version.outputs.JAVA_VERSION = $(( ${{steps.java-version.outputs.JAVA_VERSION.value}} == $(cat java-version.txt) ? true : false ))" >> ${{ env.java_version }}
-
+            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >> ${{ env.java-version }}
+            
         # run: | 
         #     echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >> ${{ env.java_version }}
             
@@ -164,6 +163,8 @@ jobs:
         
         #   $(( steps.java-version.outputs.JAVA_VERSION )) = ${{ env.java_version }}
         # # echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`" 
+        #echo "steps.java-version.outputs.JAVA_VERSION = $(( ${{steps.java-version.outputs.JAVA_VERSION.value}} == $(cat java-version.txt) ? true : false ))" >> ${{ env.java_version }}
+
 
 
       - name: Set up JDK 8
