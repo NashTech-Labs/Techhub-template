@@ -1,28 +1,66 @@
-# Angular and TypeScript Hello World Project
+Techhub-template
+What is Tech-Hub Template
+Knoldus Tech Hub is the one-stop solution to all your development requirement. You can learn and kickstart your development with these pre-built templates in no time. We have showcased all the technologies that are being used at knoldus and templates that can make a good getting started experience for developers.
 
-The Hello World project is an Angular 2+ starter project that has the npm modules, 
-configuration, scripts and folders and routing in place to make getting started 
-with an Angular project easy!
+Purpose of this project
+We've created this project, so that we can store all the Tech-Hub Templates contributed by knolders at this single place. You can find all the Tech-Hub Templates here only.
 
-Here's what is in the project:
+How to add Tech-Hub Template by using submodule
+Step 1 - Clone the Techhub Template Repository
+git clone https://github.com/knoldus/Techhub-template.git
 
-* Angular scripts and TypeScript configuration are ready to go
-* A simple app component 
-* Bootstrap for CSS
+Step 2 - Create & Checkout to new branch using
+git checkout -b <branchname>
 
-This is a very simple "Hello World" project to help get you started.
+Step 3 - You have to create a directory in your newly created branch and . For example
+a. java for Java Application
 
-If you're using VS Code, install my [Angular code snippets](https://blog.codewithdan.com/2017/04/01/angular-2-typescript-and-html-snippets-for-vs-code/) 
-to simplify the process of writing Angular code. The code snippets make it easy
-to build Angular components, services, pipes, directives and more.
+mkdir java && cd java
+b. scala for Scala Application
 
+mkdir scala && cd scala
+c. angular for Angular Application
 
-## Running the Application
+mkdir angular && cd angular
 
-1. Install the Angular CLI
+Step 4 - Now, create a submodule under this directory.
+git submodule add <Your template repository URL>
 
-    `npm install -g @angular/cli`
+Step 5 - Push your changes to the code.
+git add.
+git commit -m "your message"
+git push -u origin <branchname>
 
-1. Run `npm install`
+Step 6 - Raise a Pull Request from your branch to main branch.
 
-1. Run `ng serve -o`
+Step 7 - Now, Click on git Actions to check your build.
+
+Languages Used
+Java
+Scala
+Angular
+Build Tools Used
+Maven
+Gradle
+SBT
+Note:- As of now we are using JDK Version 11 as default. If you want to use another version of java you will required to create a file named as :-
+cat >java-version.txt
+
+8
+
+Now save the changes and whatever jdk version you want to use, mention in java-version.txt file as shown above like 8, Nothing else.
+You can use the following jdk versions
+8
+
+11
+
+13
+
+15
+
+17
+
+You've to fullfil the criteria to merge a Pull Request
+Make sure init job should be running successfully.
+Make sure specific build job should be running successfully.
+Rest jobs should be skipped.

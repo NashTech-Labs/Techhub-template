@@ -15,7 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
+  # This workflow contains a job called "init"
   init:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -30,6 +30,7 @@ jobs:
         with:
           fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
 
+      # Retrieve all changed files
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v2.0.0
@@ -37,90 +38,117 @@ jobs:
       - name: Get Language & project name
         id: get-values
         run: |
-          echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' |cut -f 1 -d "/" |uniq`"
-          echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' |cut -f 2 -d "/" |uniq`"
-
+          echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 1 -d "/" |uniq`"
+          echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 2 -d "/" |uniq`"
       - name: echo Language & project name
         run: echo ${{ steps.get-values.outputs.LANGUAGE_NAME }} ${{ steps.get-values.outputs.PROJECT_NAME }}
+
   build-scala:
-    needs: init
-    runs-on: ubuntu-latest
+    needs: init          # Identifies init job that must be completed successfully. 
+    runs-on: ubuntu-latest        # The type of machine to run the job on.
     if: needs.init.outputs.LANGUAGE_NAME == 'scala'
-
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
+        
     steps:
-      - uses: actions/checkout@v2
 
-      - name: check env
+      - uses: actions/checkout@v2  # This action checks-out the repository
+      
+      - name: Checkout submodule
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+
+      - name: check env   # Name of the step to be perform
         run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
         
-      - name: check build tool
+      - name: check build tool    # Name of the step to be perform
         id: build-tool
         run:  |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
-                echo "sbt"
-            elif [ -f "build.gradle" ]
-            then
-                echo "gradle"
-            elif [ -f "pom.xml" ]
-            then
-                echo "maven"
-            elif [ -f "build.xml" ]
-            then
-                echo "ant"
-            else 
-                echo "scalac"
-            fi`"
+              echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then  
+                  echo "sbt"
+              elif [ -f "build.gradle" ] 
+              then
+                  echo "gradle"
+              elif [ -f "pom.xml" ]
+              then
+                  echo "maven"
+              elif [ -f "build.xml" ]
+              then
+                  echo "ant"
+              else 
+                  echo "scalac"
+              fi`"
+
       - name: Set up JDK 11
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
+
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            sbt clean test
+        run: sbt clean package
+
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            mvn package
+        run: mvn package
+
       - name: Validate Gradle wrapper
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            ./gradlew build
+        run: ./gradlew build
+
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            ant -noinput -buildfile build.xml
+        run: ant -noinput -buildfile build.xml
+
       - name: Build with scalac
         if: steps.build-tool.outputs.TOOL_NAME == 'scalac'
         run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
             sudo apt install scala -y
             scalac *.scala
             
   build-java:
     needs: init
     runs-on: ubuntu-latest
+    env:
+      java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
-
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
+ 
     steps:
-      - uses: actions/checkout@v2
 
-      - name: check env
-        run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
-        
+      - uses: actions/checkout@v2
+      
+      - name: checkcheck dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+      
+      - name: Checkout submodule
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+      
       - name: check build tool
         id: build-tool
-        run:  |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        run: |
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
@@ -135,36 +163,128 @@ jobs:
             else 
                 echo "javac"
             fi`"
+
+      - name: Get java version
+        id: java-version
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        run: |
+           echo '::set-output name=JAVA_VERSION::
+            cat java-version.txt'
+        continue-on-error: true
+        if: steps.java-version.outcome != 'success'
+           ${{steps.java-version.outputs.JAVA_VERSION}} == ${{ env.java_version }}
+
+      - name: Set up JDK 8
+        if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '8'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+
       - name: Set up JDK 11
+        if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '11'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
+
+      - name: Set up JDK 16
+        if: ${{ steps.java-version.outputs.JAVA_VERSION }} == '16'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '16'
+          distribution: 'adopt'
+
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            sbt clean test
+        run: sbt clean test
+
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            mvn package
+        run: mvn package
+
       - name: Validate Gradle wrapper
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            ./gradlew build
+        run: ./gradlew build
+
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
-        run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            ant -noinput -buildfile build.xml
+        run: ant -noinput -buildfile build.xml
+
       - name: Build with javac
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
+        run: javac src/*.java
+
+  build-angular:
+    needs: init
+    runs-on: ubuntu-latest
+    if: needs.init.outputs.LANGUAGE_NAME == 'angular'
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+    steps:
+
+      - uses: actions/checkout@v2
+      
+      - name: Checkout submodule
+        uses: actions/checkout@v2.0.0
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          repository: knoldus/Techhub-template
+          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          ref: 'master'
+      
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build with npm
+        run: npm run build
+        
+  sonarqube:
+    needs: [build-angular, build-scala, build-java, init]
+    if: |
+      !failure() && !cancelled() && 
+      (success('build-angular') || success('build-scala')) || (success('build-java')) 
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        
+    steps:
+    
+      - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0
+          
+      - name: Checkout submodule
         run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-            javac src/*.java -d classes
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update .
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.organization=Knoldus
+            -Dsonar.projectKey=${{needs.init.outputs.PROJECT_NAME}}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      
