@@ -203,7 +203,10 @@ jobs:
 
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
-        run: mvn package
+        run: |
+            mvn package
+            mvn verify
+            
 
       - name: Validate Gradle wrapper
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
