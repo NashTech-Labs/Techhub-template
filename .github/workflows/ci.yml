@@ -154,20 +154,19 @@ jobs:
         with:
           files: "java-version.txt"
 
-      - name: file present 
+      - name: file present
+        id: java-version 
         if: steps.check_files.outputs.files_exists == 'true'
         run: |
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
 
-      - name: file not present
-        id: java-version
-        env:
-          java_version: 11
+      - name: file not present then set up jdk 11
         if: steps.check_files.outputs.files_exists == 'false'
-        run: |
-            echo "::set-output name=JAVA_VERSION::$($java_version)"
-            echo "${{ steps.java-version.outputs.JAVA_VERSION }}"
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
 
 
       # - name: Get java version
