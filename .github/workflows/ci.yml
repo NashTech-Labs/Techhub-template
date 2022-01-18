@@ -160,7 +160,7 @@ jobs:
         continue-on-error: true
         if: steps.java-version.outcome == 'failure'
           steps.java-version.outputs.JAVA_VERSION  = ${{ env.java_version }}
-        # echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`"
+        # echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`" hoo"
 
 
       - name: Set up JDK 8
