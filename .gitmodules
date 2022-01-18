@@ -1,4 +1,3 @@
-
-[submodule "java/j1"]
-	path = java/j1
-	url = https://github.com/MukeshAtGit/Sample-maven-app.git
+[submodule "java/dockerfile-maven"]
+	path = java/dockerfile-maven
+	url = https://github.com/yamikarajput546/dockerfile-maven.git
