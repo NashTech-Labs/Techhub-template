@@ -153,15 +153,14 @@ jobs:
       - name: Get java version
         id: java-version
         run: |
-            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >>  $GITHUB_ENV
+            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" 
             
         # run: | 
         #     echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >> ${{ env.java_version }}
             
-        # continue-on-error: true
-        # if: steps.java-version.outcome =! 'success'
-        
-        #   $(( steps.java-version.outputs.JAVA_VERSION )) = ${{ env.java_version }}
+        continue-on-error: true
+        if: steps.java-version.outputs.JAVA_VERSION == ''        
+          $(( steps.java-version.outputs.JAVA_VERSION )) = ${{ env.java_version }}
         # # echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`" 
         #echo "steps.java-version.outputs.JAVA_VERSION = $(( ${{steps.java-version.outputs.JAVA_VERSION.value}} == $(cat java-version.txt) ? true : false ))" >> ${{ env.java_version }}
 
