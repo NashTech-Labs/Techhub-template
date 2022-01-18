@@ -148,30 +148,30 @@ jobs:
                 echo "javac"
             fi`"
 
-      - name: change dir
+      - name: java-version present or not
+        id: pn
         run: |
-            pwd
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+            echo "::set-output name=FILE::`if [ -f "java-version.txt" ]; then
+                echo "txt"
+            else
+                echo "notxt"
+            fi`"
+            
 
 
-      - name: "Check file existence"
-        id: check_files
-        uses: andstor/file-existence-action@v1
-        with:
-          files: "java-version.txt"
-        
+    
           
 
       - name: file present
         id: java-version 
-        if: steps.check_files.outputs.files_exists == 'true'
+        if: steps.pn.outputs.FILE == 'txt'
         run: |
             pwd
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
 
       - name: file not present then set up jdk 11
-        if: steps.check_files.outputs.files_exists == 'false'
+        if: steps.pn.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
