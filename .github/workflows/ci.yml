@@ -157,7 +157,8 @@ jobs:
             
         continue-on-error: true
         if: steps.java-version.outputs.name =! 'success'
-        run: echo "${{ steps.java-version.outputs.JAVA_VERSION }} = = ${{ env.java_version }}""
+        run: |
+            echo "${{ steps.java-version.outputs.JAVA_VERSION }} = = ${{ env.java_version }}""
         # echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`" 
 
 
