@@ -203,10 +203,7 @@ jobs:
 
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
-        run: |
-            mvn package
-            mvn dockerfile:build
-            mvn verify
+        run: mvn package -rf :dockerfile-maven-extension
             
 
       - name: Validate Gradle wrapper
