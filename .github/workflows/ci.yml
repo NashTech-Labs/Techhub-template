@@ -165,7 +165,7 @@ jobs:
           java_version: 11
         if: steps.check_files.outputs.files_exists == 'false'
         run: |
-            echo "::set-output name=JAVA_VERSION::$java_version"
+            echo "::set-output name=JAVA_VERSION::${{ java_version }}"
             echo "${{ steps.java-version.outputs.JAVA_VERSION }}"
 
 
@@ -178,7 +178,7 @@ jobs:
       #   #     echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >> ${{ env.java_version }}
             
       #   continue-on-error: true
-      #   if: steps.java-version.outputs.JAVA_VERSION == ''        
+      #   if: steps.java-version.outputs.JAVA_VERSION == ''    {{}}    
       #     $(( steps.java-version.outputs.JAVA_VERSION )) = ${{ env.java_version }}
         # # echo "::set-output name=JAVA_VERSION::`echo $(> java-version.txt)`" 
         #echo "steps.java-version.outputs.JAVA_VERSION = $(( ${{steps.java-version.outputs.JAVA_VERSION.value}} == $(cat java-version.txt) ? true : false ))" >> ${{ env.java_version }}
