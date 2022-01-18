@@ -152,7 +152,7 @@ jobs:
 
       - name: Get java version
         id: java-version
-        outputs:
+        output:
           JAVA_VERSION: $(cat java-version.txt)
         run: |
             echo "steps.java-version.outputs.JAVA_VERSION=${{ $steps.java-version.outputs.JAVA_VERSION == $(cat java-version.txt) ? true :false " >> ${{ env.java_version }}
