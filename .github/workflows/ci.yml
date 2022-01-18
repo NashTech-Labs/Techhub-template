@@ -153,6 +153,7 @@ jobs:
         uses: andstor/file-existence-action@v1
         with:
           files: "java-version.txt"
+        run: pwd
           
 
       - name: file present
