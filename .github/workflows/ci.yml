@@ -148,12 +148,18 @@ jobs:
                 echo "javac"
             fi`"
 
+      - name: change dir
+        run: |
+            pwd
+            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+
+
       - name: "Check file existence"
         id: check_files
         uses: andstor/file-existence-action@v1
         with:
           files: "java-version.txt"
-        run: pwd
+        
           
 
       - name: file present
