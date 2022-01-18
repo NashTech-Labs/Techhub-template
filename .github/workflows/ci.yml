@@ -166,7 +166,7 @@ jobs:
           java_version: 11
         if: steps.check_files.outputs.files_exists == 'false'
         run: |
-            echo "::set-output name=JAVA_VERSION::$(${{ env.java_version }})"
+            echo "::set-output name=JAVA_VERSION::$($java_version)"
             echo "${{ steps.java-version.outputs.JAVA_VERSION }}"
 
 
