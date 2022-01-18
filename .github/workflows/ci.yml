@@ -158,6 +158,9 @@ jobs:
       - name: file present
         id: java-version 
         if: steps.check_files.outputs.files_exists == 'true'
+        with:
+          name: java
+          path: java-version.txt
         run: |
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
