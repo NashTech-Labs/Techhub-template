@@ -153,15 +153,13 @@ jobs:
         uses: andstor/file-existence-action@v1
         with:
           files: "java-version.txt"
-          allow_failure: true
+          
 
       - name: file present
         id: java-version 
         if: steps.check_files.outputs.files_exists == 'true'
-        with:
-          name: java
-          path: java-version.txt
         run: |
+            pwd
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
 
