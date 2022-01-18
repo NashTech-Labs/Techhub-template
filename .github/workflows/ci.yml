@@ -123,7 +123,7 @@ jobs:
 
     steps:
 
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v1
       
       - name: Checkout submodules
         uses: srt32/git-actions@v0.0.3
