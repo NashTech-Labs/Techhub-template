@@ -165,7 +165,7 @@ jobs:
       - name: file not present
         if: steps.check_files.outputs.files_exists == 'false'
         run: |
-            echo "::set-output name=JAVA_VERSION::11"
+            echo '::set-output name=JAVA_VERSION::11'
 
 
       # - name: Get java version
