@@ -153,7 +153,7 @@ jobs:
       - name: Get java version
         id: java-version
         run: |
-            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt) || ${{ env.java-version }}"
+            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >>  $GITHUB_ENV
             
         # run: | 
         #     echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)" >> ${{ env.java_version }}
