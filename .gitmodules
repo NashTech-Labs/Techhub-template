@@ -1,3 +1,6 @@
 [submodule "java/java1"]
 	path = java/java1
 	url = git@github.com:yamikarajput546/TJava.git
+[submodule "angular/angular_hello"]
+	path = angular/angular_hello
+	url = https://github.com/NehaK275/angular_hello.git
