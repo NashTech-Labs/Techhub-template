@@ -205,6 +205,7 @@ jobs:
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
         run: |
             mvn package
+            mvn dockerfile:build
             mvn verify
             
 
