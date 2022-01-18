@@ -55,6 +55,18 @@ jobs:
 
       - uses: actions/checkout@v2  # This action checks-out the repository
 
+      
+      - name: Checkout submodule
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+
+
       - name: check env   # Name of the step to be perform
         run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
         
@@ -123,6 +135,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
+
     
       - name: Checkout  private submodules
         uses: actions/checkout@v2
@@ -133,6 +146,23 @@ jobs:
           ref: ${{ github.head_ref }}
           submodules: true
 
+
+
+      
+      - name: checkcheck dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+      
+      - name: Checkout submodule
+        run: |
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          
+      - name: checkcheck Dir
+        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+      
 
       - name: check build tool
         id: build-tool
