@@ -123,15 +123,20 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-    
-      - name: Checkout  private submodules
-        uses: actions/checkout@v2
+
+      - name: Checkout submodules
+        uses: srt32/git-actions@v0.0.3
         with:
-          repository: yamikarajput546/TJava
-          token: ${{ secrets.GH_PAT || github.token}} #${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains PAT
-          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-          ref: ${{ github.head_ref }}
-          submodules: true
+          args: git submodule update --init --remote ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} 
+    
+      # - name: Checkout  private submodules
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: yamikarajput546/TJava
+      #     token: ${{ secrets.GH_PAT || github.token}} #${{ secrets.GH_PAT || github.token }} # `GH_PAT` is a secret that contains PAT
+      #     path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+      #     ref: ${{ github.head_ref }}
+      #     submodules: true
 
 
       - name: check build tool
