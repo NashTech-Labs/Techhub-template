@@ -124,9 +124,9 @@ jobs:
     needs: init
     runs-on: ubuntu-latest
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
-    # defaults:
-    #   run:
-    #     working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
  
     steps:
 
