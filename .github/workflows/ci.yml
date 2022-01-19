@@ -136,6 +136,7 @@ jobs:
         run: |
           cd ../..
           git remote -v
+          git fetch
           git config --file .gitmodules --get-regexp url | while read url; do
           git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
