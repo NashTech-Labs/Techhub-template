@@ -149,7 +149,9 @@ jobs:
       
       - name: check build tool
         id: build-tool
+        
         run: |
+            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
@@ -170,6 +172,7 @@ jobs:
       - name: java-version present or not #
         id: pn
         run: |
+            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
             echo "::set-output name=FILE::`if [ -f "java-version.txt" ]; then
                 echo "txt"
             else
