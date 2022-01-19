@@ -1,3 +1,3 @@
-[submodule "java/jhp"]
-	path = java/jhp
-	url = https://github.com/yamikarajput546/java-hello-world-gradle.git
+[submodule "java/dmp"]
+	path = java/dmp
+	url = https://github.com/yamikarajput546/dockerfile-maven.git
