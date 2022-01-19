@@ -132,6 +132,9 @@ jobs:
 
       - uses: actions/checkout@v2
 
+      - name: Checkout submodule
+        run: |
+
           git remote -v
           git submodule update --init ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
