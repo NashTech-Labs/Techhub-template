@@ -59,10 +59,14 @@ jobs:
       
       - name: Checkout submodule
         run: |
+          cd ../..
+          git remote -v
           git config --file .gitmodules --get-regexp url | while read url; do
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
+
           git submodule init
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
           
       - name: checkcheck Dir
         run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
