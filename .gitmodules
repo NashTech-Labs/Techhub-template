@@ -1,3 +1,3 @@
-[submodule "java/java-Library-p"]
-	path = java/java-Library-p
-	url = https://github.com/yamikarajput546/java-Library.git
+[submodule "java/java-Lib-p"]
+	path = java/java-Lib-p
+	url = git@github.com:yamikarajput546/java-Library.git
