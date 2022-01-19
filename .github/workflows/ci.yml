@@ -40,8 +40,10 @@ jobs:
         run: |
           echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 1 -d "/" |uniq`"
           echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 2 -d "/" |uniq`"
+
       - name: echo Language & project name
         run: echo ${{ steps.get-values.outputs.LANGUAGE_NAME }} ${{ steps.get-values.outputs.PROJECT_NAME }}
+
 
   build-scala:
     needs: init          # Identifies init job that must be completed successfully. 
@@ -121,8 +123,6 @@ jobs:
   build-java:
     needs: init
     runs-on: ubuntu-latest
-    env:
-      java_version: 11
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
     # defaults:
     #   run:
@@ -131,15 +131,13 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-    
-      
-      - name: Checkout submodule
-        run: |
-          git config --file .gitmodules --get-regexp url | while read url; do
-            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
-          done
+
           git remote -v
           git submodule update --init ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+          git submodule init
+          git submodule update ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
           
       - name: checkcheck Dir
         run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
@@ -162,7 +160,9 @@ jobs:
                 echo "javac"
             fi`"
 
-      - name: java-version present or not
+
+      
+      - name: java-version present or not #
         id: pn
         run: |
             echo "::set-output name=FILE::`if [ -f "java-version.txt" ]; then
