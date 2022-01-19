@@ -151,7 +151,7 @@ jobs:
         id: build-tool
         
         run: |
-            cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+            
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
