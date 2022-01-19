@@ -324,7 +324,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=Knoldus
-            -Dsonar.projectKey=${{needs.init.outputs.PROJECT_NAME}}
+            -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
