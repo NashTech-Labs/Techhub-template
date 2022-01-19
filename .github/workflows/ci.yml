@@ -163,7 +163,7 @@ jobs:
             fi`"
 
       
-      - name: java-version present or not
+      - name: java-version present or not #
         id: pn
         run: |
             echo "::set-output name=FILE::`if [ -f "java-version.txt" ]; then
