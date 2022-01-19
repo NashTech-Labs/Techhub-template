@@ -242,9 +242,11 @@ jobs:
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
       - name: Build with gradle
-        cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
-        run: ./gradlew build
+        run: |
+             cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+            ./gradlew build
 
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
