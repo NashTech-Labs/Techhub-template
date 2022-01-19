@@ -143,9 +143,10 @@ jobs:
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
-          
+
       - name: checkcheck Dir
-        run: pwd && ls
+        run: pwd &&  ls
+
       
       - name: check build tool
         id: build-tool
@@ -169,8 +170,8 @@ jobs:
 
 
       
-      - name: java-version present or not #
-        id: pn
+      - name: java-version.txt present or not 
+        id: java-version-txt
         run: |
             echo "::set-output name=FILE::`if [ -f "java-version.txt" ]; then
                 echo "txt"
@@ -180,13 +181,13 @@ jobs:
          
       - name: file present
         id: java-version 
-        if: steps.pn.outputs.FILE == 'txt'
+        if: steps.java-version-txt.outputs.FILE == 'txt'
         run: |
             pwd
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
       - name: file not present then set up jdk 11
-        if: steps.pn.outputs.FILE == 'notxt'
+        if: steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
