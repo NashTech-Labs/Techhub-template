@@ -1,0 +1,3 @@
+[submodule "scala/scala"]
+	path = scala/scala
+	url = https://github.com/Shubham-Gupta3197/scala-with-maven.git
