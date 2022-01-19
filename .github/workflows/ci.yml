@@ -131,8 +131,7 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-      
-      
+
       - name: Checkout submodule
         run: |
           cd ../..
@@ -144,12 +143,16 @@ jobs:
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
+
       - name: checkcheck Dir
         run: pwd &&  ls
+
       
       - name: check build tool
         id: build-tool
+        
         run: |
+            
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
@@ -164,6 +167,7 @@ jobs:
             else 
                 echo "javac"
             fi`"
+
 
       
       - name: java-version.txt present or not 
@@ -237,9 +241,10 @@ jobs:
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
-      - name: Build with gradle
+      - name: Build with gradle        
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
-        run: ./gradlew build
+        run: |
+            ./gradlew build
 
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
