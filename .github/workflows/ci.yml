@@ -325,7 +325,7 @@ jobs:
           args: >
             -Dsonar.organization=Knoldus
             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
-            -Dsonar.sources=src/main/scala/
+            -Dsonar.sources=${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}/src/main/scala/
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
