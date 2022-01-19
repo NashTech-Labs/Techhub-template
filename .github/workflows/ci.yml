@@ -40,9 +40,10 @@ jobs:
         run: |
           echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 1 -d "/" |uniq`"
           echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 2 -d "/" |uniq`"
-          
+
       - name: echo Language & project name
         run: echo ${{ steps.get-values.outputs.LANGUAGE_NAME }} ${{ steps.get-values.outputs.PROJECT_NAME }}
+
 
   build-scala:
     needs: init          # Identifies init job that must be completed successfully. 
