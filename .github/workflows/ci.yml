@@ -331,9 +331,4 @@ jobs:
 #           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: SonarQube Scan
-        uses: mathrix-education/sonar-scanner@master
-        with:
-          version: 4.2.0.1873 # required
-          typescript: true 
-          scan: true
-          args: --debug -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}  -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: mvn -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}  -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
