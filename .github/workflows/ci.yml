@@ -127,7 +127,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: my-artifact
-          path: ./target/classes
+          path: ./target/classes/*
             
   build-java:
     needs: init
@@ -266,7 +266,7 @@ jobs:
       - uses: actions/upload-artifact@master
         with:
           name: my-artifact
-          path: ./target/classes
+          path: ./target/classes/*
 
   build-angular:
     needs: init
@@ -343,7 +343,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: my-artifact
-          path: ./target/classes
+          path: ./target/classes/*
 
 
       - name: SonarQube init
