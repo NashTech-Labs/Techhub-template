@@ -73,6 +73,7 @@ jobs:
 
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
         
       # check current directory and list the files    
       - name: checkcheck Dir
@@ -229,7 +230,9 @@ jobs:
       # it will check the used build tool in submodule
       - name: check build tool
         id: build-tool
+        
         run: |
+            
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
