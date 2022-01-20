@@ -425,6 +425,7 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
+          projectBaseDir: app/src
           args: >
             -Dsonar.organization=Knoldus
             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
