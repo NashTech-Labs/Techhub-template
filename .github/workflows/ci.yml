@@ -337,4 +337,4 @@ jobs:
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
       - name: SonarQube Scan
-        run: sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
