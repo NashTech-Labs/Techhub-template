@@ -1,0 +1,3 @@
+[submodule "angular/Hello__world"]
+	path = angular/Hello__world
+	url = https://github.com/NehaK275/Hello__world.git
