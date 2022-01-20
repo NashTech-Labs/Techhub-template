@@ -331,4 +331,10 @@ jobs:
 #           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: SonarQube Scan
-        run: mvn clean verify sonar:sonar -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}  -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: |
+          wget -O ~/sonar-scanner.zip \
+            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+          sudo unzip ~/sonar-scanner.zip -d /opt && \
+          rm ~/sonar-scanner.zip
+      - name: SonarQube Scan
+        run: sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
