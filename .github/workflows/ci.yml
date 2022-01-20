@@ -319,14 +319,21 @@ jobs:
       - name: checkcheck Dir
         run: pwd && ls
 
+#       - name: SonarQube Scan
+#         uses: sonarsource/sonarqube-scan-action@master
+#         with:
+#           args: >
+#             -Dsonar.organization=Knoldus
+#             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
+#             -Dsonar.java.binaries=./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}/target/classes
+#         env:
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
       - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
+        uses: mathrix-education/sonar-scanner@master
         with:
-          args: >
-            -Dsonar.organization=Knoldus
-            -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
-            -Dsonar.java.binaries=./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}/target/classes
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      
+          version: 4.2.0.1873 # required
+          typescript: true 
+          scan: true
+          args: --debug -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}  -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}   -Dsonar.login=${{ secrets.SONAR_TOKEN }}
