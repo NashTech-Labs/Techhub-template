@@ -429,8 +429,9 @@ jobs:
             -Dsonar.organization=Knoldus
             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
             -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco.xml' | sed 's/.*/&/' | tr '\n' ',')
-            -Dsonar.tests=tests/
-            -Dsonar.verbose=true
+            
+            # -Dsonar.tests=tests/
+            # -Dsonar.verbose=true
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
