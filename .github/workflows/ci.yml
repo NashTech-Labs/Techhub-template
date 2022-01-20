@@ -428,7 +428,7 @@ jobs:
           args: >
             -Dsonar.organization=Knoldus
             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
-            -Dsonar.jacoco.coverage.reportPaths=coverage.xml
+            -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco.xml' | sed 's/.*/&/' | tr '\n' ',')
             -Dsonar.tests=tests/
             -Dsonar.verbose=true
         env:
