@@ -2,7 +2,7 @@
 
 name: CI
 
-# Controls when the workflow will run
+# on event which controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
@@ -17,7 +17,7 @@ on:
 jobs:
   # This workflow contains a job called "init"
   init:
-    # The type of runner that the job will run on
+    # The type of github hosted runner that the job will run on
     runs-on: ubuntu-latest
     outputs:
       LANGUAGE_NAME: ${{ steps.get-values.outputs.LANGUAGE_NAME }}
@@ -28,49 +28,58 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0  # OR "2" -> To retrieve the preceding commit.
+          fetch-depth: 0  # 0 means fetch all history for all branches and tags
 
       # Retrieve all changed files
       - name: Get changed files
         id: changed-files
         uses: tj-actions/changed-files@v2.0.0
 
+      # it gets the values of language which represents any (java, scala , angular) and project which  represents submodule directory name
       - name: Get Language & project name
         id: get-values
         run: |
           echo "::set-output name=LANGUAGE_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 1 -d "/" |uniq`"
           echo "::set-output name=PROJECT_NAME::`echo ${{ steps.changed-files.outputs.all_changed_files }} | sed 's/ /\'$'\n/g' | grep -v  "/workflows/*" | grep '/' | cut -f 2 -d "/" |uniq`"
-
+      
+      # print the language and project name 
       - name: echo Language & project name
         run: echo ${{ steps.get-values.outputs.LANGUAGE_NAME }} ${{ steps.get-values.outputs.PROJECT_NAME }}
 
-
+  
   build-scala:
-    needs: init          # Identifies init job that must be completed successfully. 
-    runs-on: ubuntu-latest        # The type of machine to run the job on.
+    # build-scala will start execution after init job completed successfully.
+    needs: init 
+    # The type of github hosted runner that the job will run on                   
+    runs-on: ubuntu-latest  
+    # language name should be match such as scala          
     if: needs.init.outputs.LANGUAGE_NAME == 'scala'
     defaults:
       run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # set the working directory for submodule
         
     steps:
+      # This action checks-out the repository
+      - uses: actions/checkout@v2  
 
-      - uses: actions/checkout@v2  # This action checks-out the repository
-      
+      # checks-out the added submodule 
       - name: Checkout submodule
         run: |
+          cd ../..
+          git remote -v
           git config --file .gitmodules --get-regexp url | while read url; do
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
-          git submodule init
-          
-      - name: checkcheck Dir
-        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
 
-      - name: check env   # Name of the step to be perform
-        run: echo ${{needs.init.outputs.LANGUAGE_NAME}} ${{needs.init.outputs.PROJECT_NAME}}
+          git submodule init
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
         
-      - name: check build tool    # Name of the step to be perform
+      # check current directory and list the files    
+      - name: checkcheck Dir
+        run: pwd && ls
+
+      # it will check the used build tool in submodule
+      - name: check build tool    
         id: build-tool
         run:  |
               echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then  
@@ -88,32 +97,99 @@ jobs:
                   echo "scalac"
               fi`"
 
-      - name: Set up JDK 11
+      # check in submodule directory if java-version.txt present or not
+      - name: java-version.txt present or not 
+        id: java-version-txt
+        run: |
+            echo "::set-output name=FILE::`if [ -f "java-version.txt" ]; then
+                echo "txt"
+            else
+                echo "notxt"
+            fi`"
+         
+      # if java-version.txt present then get the jdk version specified in it
+      - name: file present
+        id: java-version 
+        if: steps.java-version-txt.outputs.FILE == 'txt'
+        run: |
+            pwd
+            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
+
+
+      # if file not present set the default jdk which is jdk 11
+      - name: file not present then jdk 11
+        if: steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
           distribution: 'adopt'
 
+      # if java-version.txt contains 8 then set up jdk 8
+      - name: Set up JDK 8
+        if: steps.java-version.outputs.JAVA_VERSION == '8'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+
+      # if java-version.txt contains 11 then set up jdk 11
+      - name: Set up JDK 11
+        if: steps.java-version.outputs.JAVA_VERSION == '11'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+
+      # if java-version.txt contains 13 then set up jdk 13
+      - name: Set up JDK 13
+        if: steps.java-version.outputs.JAVA_VERSION == '13'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '13'
+          distribution: 'adopt'
+
+      # if java-version.txt contains 15 then set up jdk 15
+      - name: Set up JDK 15
+        if: steps.java-version.outputs.JAVA_VERSION == '15'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '15'
+          distribution: 'adopt'
+
+      # if java-version.txt contains 17 then set up jdk 17
+      - name: Set up JDK 17
+        if: steps.java-version.outputs.JAVA_VERSION == '17'
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'adopt'
+
+      # if submodule used sbt as build tool
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
         run: sbt clean package
-
+      
+      # if submodule used maven as build tool
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
         run: mvn package
 
+      # if submodule used Gradle wrapper as build tool
       - name: Validate Gradle wrapper
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
 
+      # if submodule used gradle as build tool
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         run: ./gradlew build
-
+      
+      # if submodule used ant as build tool
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
         run: ant -noinput -buildfile build.xml
-
+      
+      # if submodule haven't used any build tool
       - name: Build with scalac
         if: steps.build-tool.outputs.TOOL_NAME == 'scalac'
         run: |
@@ -121,18 +197,21 @@ jobs:
             scalac *.scala
             
   build-java:
+    # build-java will start execution after init job completed successfully.
     needs: init
+    # The type of github hosted runner that the job will run on 
     runs-on: ubuntu-latest
+    # language name should be match such as java
     if: needs.init.outputs.LANGUAGE_NAME == 'java'
     defaults:
       run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # specifying the working directory of where to run the command.
- 
-    steps:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # set up working directory for submodule
 
+    steps:
+      # This action checks-out the repository
       - uses: actions/checkout@v2
-      
-      
+
+      # checks-out the added submodule     
       - name: Checkout submodule
         run: |
           cd ../..
@@ -140,13 +219,14 @@ jobs:
           git config --file .gitmodules --get-regexp url | while read url; do
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
-
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
+      # check current directory and list the files
       - name: checkcheck Dir
         run: pwd &&  ls
-      
+
+      # it will check the used build tool in submodule
       - name: check build tool
         id: build-tool
         run: |
@@ -165,7 +245,7 @@ jobs:
                 echo "javac"
             fi`"
 
-      
+      # check in submodule directory if java-version.txt present or not
       - name: java-version.txt present or not 
         id: java-version-txt
         run: |
@@ -174,7 +254,8 @@ jobs:
             else
                 echo "notxt"
             fi`"
-         
+
+       # if java-version.txt present then get the jdk version specified in it  
       - name: file present
         id: java-version 
         if: steps.java-version-txt.outputs.FILE == 'txt'
@@ -182,6 +263,7 @@ jobs:
             pwd
             echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
+       # if file not present set the default jdk 11
       - name: file not present then set up jdk 11
         if: steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
@@ -189,6 +271,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
+      # if java-version.txt contains 8 then set up jdk 8
       - name: Set up JDK 8
         if: steps.java-version.outputs.JAVA_VERSION == '8'
         uses: actions/setup-java@v2
@@ -196,6 +279,7 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
 
+      # if java-version.txt contains 11 then set up jdk 11
       - name: Set up JDK 11
         if: steps.java-version.outputs.JAVA_VERSION == '11'
         uses: actions/setup-java@v2
@@ -203,7 +287,7 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
 
-
+      # if java-version.txt contains 13 then set up jdk 13
       - name: Set up JDK 13
         if: steps.java-version.outputs.JAVA_VERSION == '13'
         uses: actions/setup-java@v2
@@ -211,6 +295,7 @@ jobs:
           java-version: '13'
           distribution: 'adopt'
 
+      # if java-version.txt contains 15 then set up jdk 15
       - name: Set up JDK 15
         if: steps.java-version.outputs.JAVA_VERSION == '15'
         uses: actions/setup-java@v2
@@ -218,6 +303,7 @@ jobs:
           java-version: '15'
           distribution: 'adopt'
 
+       # if java-version.txt contains 17 then set up jdk 17
       - name: Set up JDK 17
         if: steps.java-version.outputs.JAVA_VERSION == '17'
         uses: actions/setup-java@v2
@@ -225,95 +311,121 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      # if submodule used sbt as build tool
       - name: Build with sbt
         if: steps.build-tool.outputs.TOOL_NAME == 'sbt'
         run: sbt clean test
 
+      # if submodule used maven as build tool
       - name: Build with maven
         if: steps.build-tool.outputs.TOOL_NAME == 'maven'
         run: mvn package
-
+      
+      # if submodule used Gradle wrapper as build tool
       - name: Validate Gradle wrapper
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
-
+ 
+      # if submodule used gradle as build tool
       - name: Build with gradle
         if: steps.build-tool.outputs.TOOL_NAME == 'gradle'
         run: ./gradlew build
-
+      
+      # if submodule used ant as build tool
       - name: Build with ant
         if: steps.build-tool.outputs.TOOL_NAME == 'ant'
         run: ant -noinput -buildfile build.xml
-
+      
+      # if submodule haven't used any build tool
       - name: Build with javac
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
         run: javac src/*.java
 
   build-angular:
+    # build-java will start execution after init job completed successfully.
     needs: init
+    # The type of github hosted runner that the job will run on 
     runs-on: ubuntu-latest
+    # language name should be match such as angular
     if: needs.init.outputs.LANGUAGE_NAME == 'angular'
     defaults:
       run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} # set up working directory for submodule
 
     steps:
-
+      # This action checks-out the repository
       - uses: actions/checkout@v2
-      
-      - name: Checkout submodule
-        uses: actions/checkout@v2.0.0
-        with:
-          token: '${{ secrets.GITHUB_TOKEN }}'
-          repository: knoldus/Techhub-template
-          path: ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-          ref: 'master'
-      
-      - name: Setup node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
 
-      - name: Install Dependencies
-        run: npm ci
-
-      - name: Build with npm
-        run: npm run build
-        
-  sonarqube:
-    needs: [build-angular, build-scala, build-java, init]
-    if: |
-      !failure() && !cancelled() && 
-      (success('build-angular') || success('build-scala')) || (success('build-java')) 
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-        
-    steps:
-    
-      - uses: actions/checkout@v2
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
-          
+      # check-outs the added submodule 
       - name: Checkout submodule
         run: |
+          cd ../..
+          git remote -v
           git config --file .gitmodules --get-regexp url | while read url; do
             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
           git submodule init
-          git submodule update .
-          
-      - name: checkcheck Dir
-        run: pwd && cd ${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}} && pwd && ls
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
+      # set up node version 14
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      
+      # clean install of the dependencies
+      - name: Install Dependencies
+        run: npm ci
+      
+      # build with npm
+      - name: Build with npm
+        run: npm run build
+        
+  sonarqube:
+    # it will start execution after init, build-scala, build-java and build-angular jobs build completed successfully.
+    needs: [build-angular, build-scala, build-java, init]
+
+    # checks if no failure && cancelled and all specified jobs build completed successfully
+    if: |
+      !failure() && !cancelled() && 
+      (success('build-angular') || success('build-scala')) || (success('build-java'))
+
+    # The type of github hosted runner that the job will run on  
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        
+    steps:
+      # This action checks-out the repository
+      - uses: actions/checkout@v2
+        with:
+          # Disabling shallow clone is recommended for improving relevancy of reporting
+          fetch-depth: 0 
+
+      # checkout the submodule   
+      - name: Checkout submodule
+        run: |
+          cd ../..
+          git remote -v
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+
+      # check current directory and list all the files   
+      - name: checkcheck Dir
+        run: pwd && ls
+      
+      # SonarQube Scan
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
           args: >
             -Dsonar.organization=Knoldus
-            -Dsonar.projectKey=${{needs.init.outputs.PROJECT_NAME}}
+            -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
+            -Dsonar.sources=src/main/scala, src/main/java
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
