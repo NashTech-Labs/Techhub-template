@@ -406,16 +406,16 @@ jobs:
           # Disabling shallow clone is recommended for improving relevancy of reporting
           fetch-depth: 0 
 
-      # checkout the submodule   
-      # - name: Checkout submodule
-      #   run: |
-      #     cd ../..
-      #     git remote -v
-      #     git config --file .gitmodules --get-regexp url | while read url; do
-      #       git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
-      #     done
-      #     git submodule init
-      #     git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+      checkout the submodule   
+      - name: Checkout submodule
+        run: |
+          cd ../..
+          git remote -v
+          git config --file .gitmodules --get-regexp url | while read url; do
+            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          done
+          git submodule init
+          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
       # check current directory and list all the files   
       - name: checkcheck Dir
@@ -425,7 +425,6 @@ jobs:
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
         with:
-          projectBaseDir: app/src
           args: >
             -Dsonar.organization=Knoldus
             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
