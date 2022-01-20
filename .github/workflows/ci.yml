@@ -123,6 +123,11 @@ jobs:
         run: |
             sudo apt install scala -y
             scalac *.scala
+
+      - uses: actions/upload-artifact@master
+        with:
+          name: my-artifact
+          path: ./target/classes
             
   build-java:
     needs: init
@@ -257,6 +262,11 @@ jobs:
       - name: Build with javac
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
         run: javac src/*.java
+        
+      - uses: actions/upload-artifact@master
+        with:
+          name: my-artifact
+          path: ./target/classes
 
   build-angular:
     needs: init
@@ -330,6 +340,12 @@ jobs:
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
+      - uses: actions/download-artifact@master
+        with:
+          name: my-artifact
+          path: ./target/classes
+
+
       - name: SonarQube Scan
         run: |
           wget -O ~/sonar-scanner.zip \
@@ -337,6 +353,4 @@ jobs:
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
       - name: SonarQube Scan
-        run: |
-              mvn package
-              /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
