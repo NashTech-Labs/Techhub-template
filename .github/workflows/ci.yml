@@ -124,10 +124,17 @@ jobs:
             sudo apt install scala -y
             scalac *.scala
 
-      - uses: actions/upload-artifact@master
-        with:
-          name: my-artifact
-          path: ./target/classes/*
+
+      - name: SonarQube init
+        run: |
+          wget -O ~/sonar-scanner.zip \
+            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+          sudo unzip ~/sonar-scanner.zip -d /opt && \
+          rm ~/sonar-scanner.zip
+
+      - name: SonarQube Scan
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             
   build-java:
     needs: init
@@ -161,7 +168,6 @@ jobs:
         id: build-tool
         
         run: |
-            
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
@@ -176,8 +182,6 @@ jobs:
             else 
                 echo "javac"
             fi`"
-
-
       
       - name: java-version.txt present or not 
         id: java-version-txt
@@ -262,11 +266,17 @@ jobs:
       - name: Build with javac
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
         run: javac src/*.java
-        
-      - uses: actions/upload-artifact@master
-        with:
-          name: my-artifact
-          path: ./target/classes/*
+
+      - name: SonarQube init
+        run: |
+          wget -O ~/sonar-scanner.zip \
+            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+          sudo unzip ~/sonar-scanner.zip -d /opt && \
+          rm ~/sonar-scanner.zip
+
+      - name: SonarQube Scan
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
 
   build-angular:
     needs: init
@@ -340,18 +350,13 @@ jobs:
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
-      - uses: actions/download-artifact@master
-        with:
-          name: my-artifact
-          path: ./target/classes/*
+#       - name: SonarQube init
+#         run: |
+#           wget -O ~/sonar-scanner.zip \
+#             "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+#           sudo unzip ~/sonar-scanner.zip -d /opt && \
+#           rm ~/sonar-scanner.zip
 
-
-      - name: SonarQube init
-        run: |
-          wget -O ~/sonar-scanner.zip \
-            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
-          sudo unzip ~/sonar-scanner.zip -d /opt && \
-          rm ~/sonar-scanner.zip
-
-      - name: SonarQube Scan
-        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+#       - name: SonarQube Scan
+#         if: steps.cache-primes.outputs.cache-hit != 'true'
+#         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
