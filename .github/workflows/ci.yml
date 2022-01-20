@@ -123,6 +123,17 @@ jobs:
         run: |
             sudo apt install scala -y
             scalac *.scala
+
+      - name: SonarQube init
+        run: |
+          wget -O ~/sonar-scanner.zip \
+            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+          sudo unzip ~/sonar-scanner.zip -d /opt && \
+          rm ~/sonar-scanner.zip
+
+      - name: SonarQube Scan
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
             
   build-java:
     needs: init
@@ -156,7 +167,6 @@ jobs:
         id: build-tool
         
         run: |
-            
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
             elif [ -f "build.gradle" ]
@@ -171,8 +181,6 @@ jobs:
             else 
                 echo "javac"
             fi`"
-
-
       
       - name: java-version.txt present or not 
         id: java-version-txt
@@ -258,6 +266,17 @@ jobs:
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
         run: javac src/*.java
 
+      - name: SonarQube init
+        run: |
+          wget -O ~/sonar-scanner.zip \
+            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+          sudo unzip ~/sonar-scanner.zip -d /opt && \
+          rm ~/sonar-scanner.zip
+
+      - name: SonarQube Scan
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
   build-angular:
     needs: init
     runs-on: ubuntu-latest
@@ -288,44 +307,67 @@ jobs:
 
       - name: Build with npm
         run: npm run build
-        
-  sonarqube:
-    needs: [build-angular, build-scala, build-java, init]
-    if: |
-      !failure() && !cancelled() && 
-      (success('build-angular') || success('build-scala')) || (success('build-java')) 
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-        
-    steps:
-    
-      - uses: actions/checkout@v2
-        with:
-          # Disabling shallow clone is recommended for improving relevancy of reporting
-          fetch-depth: 0
-          
-      - name: Checkout submodule
+
+      - name: SonarQube init
         run: |
-          cd ../..
-          git remote -v
-          git config --file .gitmodules --get-regexp url | while read url; do
-            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
-          done
-          git submodule init
-          git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
-          
-      - name: checkcheck Dir
-        run: pwd && ls
+          wget -O ~/sonar-scanner.zip \
+            "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+          sudo unzip ~/sonar-scanner.zip -d /opt && \
+          rm ~/sonar-scanner.zip
 
       - name: SonarQube Scan
-        uses: sonarsource/sonarqube-scan-action@master
-        with:
-          args: >
-            -Dsonar.organization=Knoldus
-            -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+        
+#   sonarqube:
+#     needs: [build-angular, build-scala, build-java, init]
+#     if: |
+#       !failure() && !cancelled() && 
+#       (success('build-angular') || success('build-scala')) || (success('build-java')) 
+#     runs-on: ubuntu-latest
+#     defaults:
+#       run:
+#         working-directory: ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+        
+#     steps:
+    
+#       - uses: actions/checkout@v2
+#         with:
+#           # Disabling shallow clone is recommended for improving relevancy of reporting
+#           fetch-depth: 0
+          
+#       - name: Checkout submodule
+#         run: |
+#           cd ../..
+#           git remote -v
+#           git config --file .gitmodules --get-regexp url | while read url; do
+#             git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+#           done
+#           git submodule init
+#           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
+          
+#       - name: checkcheck Dir
+#         run: pwd && ls
+
+#       - name: SonarQube Scan
+#         uses: sonarsource/sonarqube-scan-action@master
+#         with:
+#           args: >
+#             -Dsonar.organization=Knoldus
+#             -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
+#             -Dsonar.java.binaries=./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}/target/classes
+#         env:
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+#       - name: SonarQube init
+#         run: |
+#           wget -O ~/sonar-scanner.zip \
+#             "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
+#           sudo unzip ~/sonar-scanner.zip -d /opt && \
+#           rm ~/sonar-scanner.zip
+
+#       - name: SonarQube Scan
+#         if: steps.cache-primes.outputs.cache-hit != 'true'
+#         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
