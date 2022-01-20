@@ -1,6 +1,3 @@
-[submodule "java/public-jh"]
-	path = java/public-jh
-	url = https://github.com/yamikarajput546/java-hello-world-gradle.git
 [submodule "scala/scala3-public"]
 	path = scala/scala3-public
 	url = https://github.com/yamikarajput546/scala3.git
