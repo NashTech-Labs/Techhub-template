@@ -415,6 +415,7 @@ jobs:
           rm ~/sonar-scanner.zip
           
       - name: SonarQube Scan
+<<<<<<< HEAD
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         
@@ -468,4 +469,18 @@ jobs:
   #       env:
   #         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
   #         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+=======
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.organization=Knoldus
+            -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}}
+            -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco.xml' | sed 's/.*/&/' | tr '\n' ',')
+            
+            # -Dsonar.tests=tests/
+            # -Dsonar.verbose=true
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+>>>>>>> 3dc4e1631ebf9a8aab62354d88d23a2aac42f0cc
       
