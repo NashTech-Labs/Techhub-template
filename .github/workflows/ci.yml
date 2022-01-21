@@ -257,9 +257,6 @@ jobs:
             else 
                 echo "javac"
             fi`"
-
-      # check in submodule directory if java-version.txt present or not
-
       - name: java-version.txt present or not 
         id: java-version-txt
         run: |
@@ -403,6 +400,9 @@ jobs:
         run: npm ci
       
       # build with npm
+      - name: Install Dependencies
+        run: npm ci
+
       - name: Build with npm
         run: npm run build
 
@@ -416,5 +416,7 @@ jobs:
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-        
-  
+
+      - name: SonarQube Scan
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.login=${{ secrets.SONAR_TOKEN }}        
