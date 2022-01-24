@@ -1,0 +1,6 @@
+[submodule "scala1"]
+	path = scala1
+	url = https://github.com/Shubham-Gupta3197/scala-with-gradle.git
+[submodule "scala/scala1"]
+	path = scala/scala1
+	url = https://github.com/Shubham-Gupta3197/scala-with-gradle.git
