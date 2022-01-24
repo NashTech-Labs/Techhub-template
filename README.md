@@ -69,16 +69,12 @@ Step 7 - Now, Click on git Actions to check your build.
 
 ### You can use the following jdk versions
 ```8```
-</br>
 
 ```11```
-</br>
 
 ```13```
-</br>
 
 ```15```
-</br>
 
 ```17```
 
@@ -86,5 +82,6 @@ Step 7 - Now, Click on git Actions to check your build.
 1. Make sure ```init job``` should be running successfully.
 2. Make sure specific ```build job``` should be running successfully.
 3. Rest jobs should be skipped.
+4. Atleast one approval needed to merge a pull request.
 
 
