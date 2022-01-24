@@ -68,15 +68,7 @@ Step 7 - Now, Click on git Actions to check your build.
 #### Now save the changes and whatever jdk version you want to use, mention in ```java-version.txt``` file as shown above like 8, Nothing else.
 
 ### You can use the following jdk versions
-```8```
-
-```11```
-
-```13```
-
-```15```
-
-```17```
+```8```, ```11```, ```13```, ```15```, ```17```
 
 ### You've to fullfil the criteria to merge a Pull Request
 1. Make sure ```init job``` should be running successfully.
