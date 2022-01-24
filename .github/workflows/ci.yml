@@ -68,9 +68,8 @@ jobs:
           cd ../..
           git remote -v
           git config --file .gitmodules --get-regexp url | while read url; do
-            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
-
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
 
@@ -112,18 +111,7 @@ jobs:
       - name: file present
         id: java-version 
         if: steps.java-version-txt.outputs.FILE == 'txt'
-        run: |
-            pwd
-            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
-
-
-      # if file not present set the default jdk which is jdk 11
-      - name: file not present then jdk 11
-        if: steps.java-version-txt.outputs.FILE == 'notxt'
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
+        run: echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
       # if java-version.txt contains 8 then set up jdk 8
       - name: Set up JDK 8
@@ -135,7 +123,7 @@ jobs:
 
       # if java-version.txt contains 11 then set up jdk 11
       - name: Set up JDK 11
-        if: steps.java-version.outputs.JAVA_VERSION == '11'
+        if: steps.java-version.outputs.JAVA_VERSION == '11' || steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
@@ -196,18 +184,21 @@ jobs:
         run: |
             sudo apt install scala -y
             scalac *.scala
-
+      
+      # get the SonarQube binaries
       - name: SonarQube init
         run: |
           wget -O ~/sonar-scanner.zip \
             "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
-
+      
+      # SonarQube scan used for analyze our code quality 
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
-            
+
+
   build-java:
     # build-java will start execution after init job completed successfully.
     needs: init
@@ -229,7 +220,7 @@ jobs:
           cd ../..
           git remote -v
           git config --file .gitmodules --get-regexp url | while read url; do
-            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
@@ -240,8 +231,7 @@ jobs:
 
       # it will check the used build tool in submodule
       - name: check build tool
-        id: build-tool
-        
+        id: build-tool        
         run: |
             echo "::set-output name=TOOL_NAME::`if [ -f "build.sbt" ]; then
                 echo "sbt"
@@ -259,7 +249,6 @@ jobs:
             fi`"
 
       # check in submodule directory if java-version.txt present or not
-
       - name: java-version.txt present or not 
         id: java-version-txt
         run: |
@@ -273,17 +262,7 @@ jobs:
       - name: file present
         id: java-version 
         if: steps.java-version-txt.outputs.FILE == 'txt'
-        run: |
-            pwd
-            echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
-
-       # if file not present set the default jdk 11
-      - name: file not present then set up jdk 11
-        if: steps.java-version-txt.outputs.FILE == 'notxt'
-        uses: actions/setup-java@v2
-        with:
-          java-version: '11'
-          distribution: 'adopt'
+        run: echo "::set-output name=JAVA_VERSION::$(cat java-version.txt)"
 
       # if java-version.txt contains 8 then set up jdk 8
       - name: Set up JDK 8
@@ -295,7 +274,7 @@ jobs:
 
       # if java-version.txt contains 11 then set up jdk 11
       - name: Set up JDK 11
-        if: steps.java-version.outputs.JAVA_VERSION == '11'
+        if: steps.java-version.outputs.JAVA_VERSION == '11' || steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
         with:
           java-version: '11'
@@ -355,6 +334,7 @@ jobs:
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
         run: javac src/*.java
 
+      # get the SonarQube binaries
       - name: SonarQube init
         run: |
           wget -O ~/sonar-scanner.zip \
@@ -362,9 +342,11 @@ jobs:
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
 
+      # SonarQube scan used for analyze our code quality 
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
 
   build-angular:
     # build-java will start execution after init job completed successfully.
@@ -387,7 +369,7 @@ jobs:
           cd ../..
           git remote -v
           git config --file .gitmodules --get-regexp url | while read url; do
-            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
+          git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.READ }}:${{ secrets.READ }}@github.com\//")
           done
           git submodule init
           git submodule update ./${{needs.init.outputs.LANGUAGE_NAME}}/${{needs.init.outputs.PROJECT_NAME}}
@@ -406,13 +388,15 @@ jobs:
       - name: Build with npm
         run: npm run build
 
+      # get the SonarQube binaries
       - name: SonarQube init
         run: |
           wget -O ~/sonar-scanner.zip \
             "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
-          
+
+      # SonarQube scan used for analyze our code quality    
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
