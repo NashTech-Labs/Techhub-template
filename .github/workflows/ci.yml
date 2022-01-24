@@ -196,14 +196,16 @@ jobs:
         run: |
             sudo apt install scala -y
             scalac *.scala
-
+      
+      # get the SonarQube binaries
       - name: SonarQube init
         run: |
           wget -O ~/sonar-scanner.zip \
             "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip" && \
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
-
+      
+      # SonarQube scan used for analyze our code quality 
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
@@ -355,6 +357,7 @@ jobs:
         if: steps.build-tool.outputs.TOOL_NAME == 'javac'
         run: javac src/*.java
 
+      # get the SonarQube binaries
       - name: SonarQube init
         run: |
           wget -O ~/sonar-scanner.zip \
@@ -362,6 +365,7 @@ jobs:
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
 
+      # SonarQube scan used for analyze our code quality 
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
@@ -406,6 +410,7 @@ jobs:
       - name: Build with npm
         run: npm run build
 
+      # get the SonarQube binaries
       - name: SonarQube init
         run: |
           wget -O ~/sonar-scanner.zip \
@@ -413,6 +418,7 @@ jobs:
           sudo unzip ~/sonar-scanner.zip -d /opt && \
           rm ~/sonar-scanner.zip
           
+      # SonarQube scan used for analyze our code quality    
       - name: SonarQube Scan
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: /opt/sonar-scanner-4.6.2.2472-linux/bin/./sonar-scanner -Dsonar.organization=Knoldus -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.projectKey=Techhub-${{needs.init.outputs.PROJECT_NAME}} -Dsonar.sources=.   -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}  -Dsonar.java.binaries=./target/classes -Dsonar.login=${{ secrets.SONAR_TOKEN }}
