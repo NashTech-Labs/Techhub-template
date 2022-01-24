@@ -121,7 +121,7 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
 
-      # if java-version.txt contains 11 then set up jdk 11
+      # if java-version.txt contains 11 or java-version.txt not present then set up jdk 11
       - name: Set up JDK 11
         if: steps.java-version.outputs.JAVA_VERSION == '11' || steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
@@ -272,7 +272,7 @@ jobs:
           java-version: '8'
           distribution: 'adopt'
 
-      # if java-version.txt contains 11 then set up jdk 11
+      # if java-version.txt contains 11 or java-version.txt not present then set up jdk 11
       - name: Set up JDK 11
         if: steps.java-version.outputs.JAVA_VERSION == '11' || steps.java-version-txt.outputs.FILE == 'notxt'
         uses: actions/setup-java@v2
