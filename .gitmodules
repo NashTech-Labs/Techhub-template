@@ -1,3 +1,6 @@
 [submodule "java/dm-p"]
 	path = java/dm-p
 	url = https://github.com/yamikarajput546/dockerfile-maven.git
+[submodule "scala/swagger-documentation-integration-in-akka-http"]
+	path = scala/swagger-documentation-integration-in-akka-http
+	url = https://github.com/knoldus/swagger-documentation-integration-in-akka-http.git
