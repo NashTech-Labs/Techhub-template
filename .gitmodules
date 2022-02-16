@@ -3,4 +3,4 @@
 	url = https://github.com/yamikarajput546/dockerfile-maven.git
 [submodule "scala/logging-in-scala"]
 	path = scala/logging-in-scala
-	url = https://github.com/knoldus/logging-in-scala
+	url = https://github.com/knoldus/logging-in-scala.git
