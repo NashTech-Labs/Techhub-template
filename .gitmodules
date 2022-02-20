@@ -1,3 +1,6 @@
 [submodule "java/dm-p"]
 	path = java/dm-p
 	url = https://github.com/yamikarajput546/dockerfile-maven.git
+[submodule "scala/Routes-Authentication-in-Akka-Http"]
+	path = scala/Routes-Authentication-in-Akka-Http
+	url = https://github.com/knoldus/Routes-Authentication-in-Akka-Http.git
