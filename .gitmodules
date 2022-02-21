@@ -4,3 +4,6 @@
 [submodule "scala/Scheduled-DB-Health-Check"]
 	path = scala/Scheduled-DB-Health-Check
 	url = https://github.com/knoldus/Scheduled-DB-Health-Check.git
+[submodule "scala/Routes-Authentication-in-Akka-Http"]
+	path = scala/Routes-Authentication-in-Akka-Http
+	url = https://github.com/knoldus/Routes-Authentication-in-Akka-Http.git
