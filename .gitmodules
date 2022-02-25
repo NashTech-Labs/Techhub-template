@@ -10,3 +10,6 @@
 [submodule "scala/akka-http-file-upload-with-formfield"]
 	path = scala/akka-http-file-upload-with-formfield
 	url = https://github.com/knoldus/akka-http-file-upload-with-formfield.git
+[submodule "java/selenium4-datadriven-framework"]
+	path = java/selenium4-datadriven-framework
+	url = https://github.com/knoldus/selenium4-datadriven-framework.git
