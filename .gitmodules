@@ -1,15 +1,4 @@
-[submodule "java/dm-p"]
-	path = java/dm-p
-	url = https://github.com/yamikarajput546/dockerfile-maven.git
-[submodule "scala/Scheduled-DB-Health-Check"]
-	path = scala/Scheduled-DB-Health-Check
-	url = https://github.com/knoldus/Scheduled-DB-Health-Check.git
-[submodule "scala/Routes-Authentication-in-Akka-Http"]
-	path = scala/Routes-Authentication-in-Akka-Http
-	url = https://github.com/knoldus/Routes-Authentication-in-Akka-Http.git
-[submodule "scala/akka-http-file-upload-with-formfield"]
-	path = scala/akka-http-file-upload-with-formfield
-	url = https://github.com/knoldus/akka-http-file-upload-with-formfield.git
-[submodule "scala/sc"]
-	path = scala/sc
+
+[submodule "scala/sc1"]
+	path = scala/sc1
 	url = https://github.com/yamikarajput546/scala3.git
