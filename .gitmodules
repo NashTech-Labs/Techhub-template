@@ -4,3 +4,12 @@
 [submodule "scala/swagger-documentation-integration-in-akka-http"]
 	path = scala/swagger-documentation-integration-in-akka-http
 	url = https://github.com/knoldus/swagger-documentation-integration-in-akka-http.git
+[submodule "scala/Scheduled-DB-Health-Check"]
+	path = scala/Scheduled-DB-Health-Check
+	url = https://github.com/knoldus/Scheduled-DB-Health-Check.git
+[submodule "scala/Routes-Authentication-in-Akka-Http"]
+	path = scala/Routes-Authentication-in-Akka-Http
+	url = https://github.com/knoldus/Routes-Authentication-in-Akka-Http.git
+[submodule "scala/akka-http-file-upload-with-formfield"]
+	path = scala/akka-http-file-upload-with-formfield
+	url = https://github.com/knoldus/akka-http-file-upload-with-formfield.git
