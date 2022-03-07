@@ -13,3 +13,6 @@
 [submodule "angular/angular-animated-list"]
 	path = angular/angular-animated-list
 	url = https://github.com/knoldus/angular-animated-list
+[submodule "scala/Request-Level-API-Example-in-Akka-Http"]
+	path = scala/Request-Level-API-Example-in-Akka-Http
+	url = https://github.com/knoldus/Request-Level-API-Example-in-Akka-Http.git
