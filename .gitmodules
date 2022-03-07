@@ -10,3 +10,6 @@
 [submodule "scala/akka-http-file-upload-with-formfield"]
 	path = scala/akka-http-file-upload-with-formfield
 	url = https://github.com/knoldus/akka-http-file-upload-with-formfield.git
+[submodule "angular/dynamic-form-in-angular-using-jsonData"]
+	path = angular/dynamic-form-in-angular-using-jsonData
+	url = https://github.com/knoldus/dynamic-form-in-angular-using-jsonData
