@@ -22,3 +22,6 @@
 [submodule "java/spring-security"]
 	path = java/spring-security
 	url = https://github.com/AnuradhaKumari201/spring-security.git
+[submodule "scala/Amazon-Pinpoint-SMS-API"]
+	path = scala/Amazon-Pinpoint-SMS-API
+	url = https://github.com/knoldus/Amazon-Pinpoint-SMS-API.git
