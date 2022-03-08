@@ -19,3 +19,6 @@
 [submodule "scala/Request-Level-API-Example-in-Akka-Http"]
 	path = scala/Request-Level-API-Example-in-Akka-Http
 	url = https://github.com/knoldus/Request-Level-API-Example-in-Akka-Http.git
+[submodule "java/SpringSecurity"]
+	path = java/SpringSecurity
+	url = https://github.com/AnuradhaKumari201/SpringSecurity.git
