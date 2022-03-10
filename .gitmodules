@@ -28,3 +28,6 @@
 [submodule "scala/Amazon-Pinpoint-SMS-API"]
 	path = scala/Amazon-Pinpoint-SMS-API
 	url = https://github.com/knoldus/Amazon-Pinpoint-SMS-API.git
+[submodule "scala/deal-with-optional-values-in-scala"]
+	path = scala/deal-with-optional-values-in-scala
+	url = https://github.com/knoldus/deal-with-optional-values-in-scala.git
