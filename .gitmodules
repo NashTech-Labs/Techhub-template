@@ -31,3 +31,6 @@
 [submodule "scala/deal-with-optional-values-in-scala"]
 	path = scala/deal-with-optional-values-in-scala
 	url = https://github.com/knoldus/deal-with-optional-values-in-scala.git
+[submodule "angular/CountdownTimer"]
+	path = angular/CountdownTimer
+	url = https://github.com/knoldus/CountdownTimer
