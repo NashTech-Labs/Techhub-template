@@ -34,3 +34,6 @@
 [submodule "angular/CountdownTimer"]
 	path = angular/CountdownTimer
 	url = https://github.com/knoldus/CountdownTimer
+[submodule "scala/exception-handling-in-scala"]
+	path = scala/exception-handling-in-scala
+	url = https://github.com/knoldus/exception-handling-in-scala.git
