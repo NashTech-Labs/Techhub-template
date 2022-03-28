@@ -49,3 +49,6 @@
 [submodule "scala/CRUD-application-using-Slick-and-MySQL"]
 	path = scala/CRUD-application-using-Slick-and-MySQL
 	url = https://github.com/knoldus/CRUD-application-using-Slick-and-MySQL.git
+[submodule "java/SpringBootWebApplication"]
+	path = java/SpringBootWebApplication
+	url = https://github.com/AnuradhaKumari201/SpringBootWebApplication.git
