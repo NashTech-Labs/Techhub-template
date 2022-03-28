@@ -46,3 +46,6 @@
 [submodule "scala/Streaming-data-with-Alpakka"]
 	path = scala/Streaming-data-with-Alpakka
 	url = https://github.com/knoldus/Streaming-data-with-Alpakka
+[submodule "Streaming-data-with-Alpakka"]
+	path = Streaming-data-with-Alpakka
+	url = https://github.com/knoldus/Streaming-data-with-Alpakka
