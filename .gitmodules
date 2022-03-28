@@ -44,3 +44,6 @@
 	path = angular/mat-table-in-angula-material
 	url = https://github.com/knoldus/mat-table-in-angula-material
 
+[submodule "scala/Spark-conversion-RDD-to-Dataframe"]
+	path = scala/Spark-conversion-RDD-to-Dataframe
+	url = https://github.com/knoldus/Spark-conversion-RDD-to-Dataframe
