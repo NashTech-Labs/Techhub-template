@@ -43,6 +43,9 @@
 [submodule "angular/mat-table-in-angula-material"]
 	path = angular/mat-table-in-angula-material
 	url = https://github.com/knoldus/mat-table-in-angula-material
+[submodule "scala/Akka-Stream-Graph-DSL"]
+	path = scala/Akka-Stream-Graph-DSL
+	url = https://github.com/knoldus/Akka-Stream-Graph-DSL
 [submodule "scala/CRUD-application-using-Slick-and-MySQL"]
 	path = scala/CRUD-application-using-Slick-and-MySQL
 	url = https://github.com/knoldus/CRUD-application-using-Slick-and-MySQL.git
