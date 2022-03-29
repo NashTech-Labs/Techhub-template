@@ -55,3 +55,6 @@
 [submodule "scala/Streaming-data-with-Alpakka"]
 	path = scala/Streaming-data-with-Alpakka
 	url = https://github.com/knoldus/Streaming-data-with-Alpakka
+[submodule "scala/Spark-conversion-RDD-to-Dataframe"]
+	path = scala/Spark-conversion-RDD-to-Dataframe
+	url = https://github.com/knoldus/Spark-conversion-RDD-to-Dataframe
