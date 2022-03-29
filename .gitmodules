@@ -43,9 +43,6 @@
 [submodule "angular/mat-table-in-angula-material"]
 	path = angular/mat-table-in-angula-material
 	url = https://github.com/knoldus/mat-table-in-angula-material
-[submodule "scala/Streaming-data-with-Alpakka"]
-	path = scala/Streaming-data-with-Alpakka
-	url = https://github.com/knoldus/Streaming-data-with-Alpakka
 [submodule "scala/Akka-Stream-Graph-DSL"]
 	path = scala/Akka-Stream-Graph-DSL
 	url = https://github.com/knoldus/Akka-Stream-Graph-DSL
@@ -55,3 +52,6 @@
 [submodule "java/SpringBootWebApplication"]
 	path = java/SpringBootWebApplication
 	url = https://github.com/AnuradhaKumari201/SpringBootWebApplication.git
+[submodule "scala/Streaming-data-with-Alpakka"]
+	path = scala/Streaming-data-with-Alpakka
+	url = https://github.com/knoldus/Streaming-data-with-Alpakka
