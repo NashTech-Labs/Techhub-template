@@ -58,3 +58,6 @@
 [submodule "scala/Spark-conversion-RDD-to-Dataframe"]
 	path = scala/Spark-conversion-RDD-to-Dataframe
 	url = https://github.com/knoldus/Spark-conversion-RDD-to-Dataframe
+[submodule "angular/reactive-form-with-validation-and-reset-functionality"]
+	path = angular/reactive-form-with-validation-and-reset-functionality
+	url = https://github.com/knoldus/reactive-form-with-validation-and-reset-functionality
