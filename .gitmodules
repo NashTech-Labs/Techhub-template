@@ -61,3 +61,6 @@
 [submodule "angular/reactive-form-with-validation-and-reset-functionality"]
 	path = angular/reactive-form-with-validation-and-reset-functionality
 	url = https://github.com/knoldus/reactive-form-with-validation-and-reset-functionality
+[submodule "java/redshift-db-version-maintainance-with-flyway"]
+	path = java/redshift-db-version-maintainance-with-flyway
+	url = https://github.com/knoldus/redshift-db-version-maintainance-with-flyway
