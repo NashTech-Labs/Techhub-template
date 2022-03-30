@@ -64,3 +64,9 @@
 [submodule "java/redshift-db-version-maintainance-with-flyway"]
 	path = java/redshift-db-version-maintainance-with-flyway
 	url = https://github.com/knoldus/redshift-db-version-maintainance-with-flyway
+[submodule "Schedulers-and-Timers-in-Akka"]
+	path = Schedulers-and-Timers-in-Akka
+	url = git@github.com:knoldus/Schedulers-and-Timers-in-Akka.git
+[submodule "scala/Schedulers-and-Timers-in-Akka"]
+	path = scala/Schedulers-and-Timers-in-Akka
+	url = git@github.com:knoldus/Schedulers-and-Timers-in-Akka.git
