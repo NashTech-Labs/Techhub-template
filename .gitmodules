@@ -67,3 +67,6 @@
 [submodule "scala/Schedulers-and-Timers-in-Akka"]
 	path = scala/Schedulers-and-Timers-in-Akka
 	url = git@github.com:knoldus/Schedulers-and-Timers-in-Akka.git
+[submodule "angular/SidebarMenu"]
+	path = angular/SidebarMenu
+	url = https://github.com/knoldus/SidebarMenu
