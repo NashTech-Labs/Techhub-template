@@ -47,3 +47,6 @@
 [submodule "scala/Spark-conversion-RDD-to-Dataframe"]
 	path = scala/Spark-conversion-RDD-to-Dataframe
 	url = https://github.com/knoldus/Spark-conversion-RDD-to-Dataframe
+[submodule "scala/zio-basics-and-Zlayer-composition"]
+	path = scala/zio-basics-and-Zlayer-composition
+	url = https://github.com/knoldus/zio-basics-and-Zlayer-composition
