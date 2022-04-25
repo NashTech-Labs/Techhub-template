@@ -76,3 +76,6 @@
 [submodule "scala/crud-operations-by-using-play-slick-in-scala"]
 	path = scala/crud-operations-by-using-play-slick-in-scala
 	url = https://github.com/knoldus/crud-operations-by-using-play-slick-in-scala
+[submodule "scala/test101"]
+	path = scala/test101
+	url = https://github.com/knoldus/test101
