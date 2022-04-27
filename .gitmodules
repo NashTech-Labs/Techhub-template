@@ -76,3 +76,9 @@
 [submodule "scala/crud-operations-by-using-play-slick-in-scala"]
 	path = scala/crud-operations-by-using-play-slick-in-scala
 	url = https://github.com/knoldus/crud-operations-by-using-play-slick-in-scala
+[submodule "java/kafka-source-connector"]
+	path = java/kafka-source-connector
+	url = https://github.com/AnuradhaKumari201/kafka-source-connector.git
+[submodule "java/kafka-connect-github-source-master"]
+	path = java/kafka-connect-github-source-master
+	url = https://github.com/AnuradhaKumari201/kafka-connect-github-source-master.git
