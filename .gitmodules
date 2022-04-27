@@ -76,3 +76,7 @@
 [submodule "scala/crud-operations-by-using-play-slick-in-scala"]
 	path = scala/crud-operations-by-using-play-slick-in-scala
 	url = https://github.com/knoldus/crud-operations-by-using-play-slick-in-scala
+
+[submodule "scala/banana"]
+	path = scala/banana
+	url = https://github.com/knoldus/banana
