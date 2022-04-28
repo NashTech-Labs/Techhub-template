@@ -82,3 +82,6 @@
 [submodule "scala/zio-basics-and-Zlayer-composition"]
 	path = scala/zio-basics-and-Zlayer-composition
 	url = https://github.com/knoldus/zio-basics-and-Zlayer-composition
+[submodule "java/exception-handling-apache-camel-with-spring"]
+	path = java/exception-handling-apache-camel-with-spring
+	url = https://github.com/knoldus/exception-handling-apache-camel-with-spring.git
