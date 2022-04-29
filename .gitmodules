@@ -85,3 +85,6 @@
 [submodule "java/exception-handling-apache-camel-with-spring"]
 	path = java/exception-handling-apache-camel-with-spring
 	url = https://github.com/knoldus/exception-handling-apache-camel-with-spring.git
+[submodule "java/pact.io"]
+	path = java/pact.io
+	url = https://github.com/knoldus/pact.io
