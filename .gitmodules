@@ -88,3 +88,7 @@
 [submodule "scala/SendGrid_Service_In_Scala"]
 	path = scala/SendGrid_Service_In_Scala
 	url = https://github.com/knoldus/SendGrid_Service_In_Scala
+
+[submodule "scala/test101"]
+	path = scala/test101
+	url = https://github.com/knoldus/test101
