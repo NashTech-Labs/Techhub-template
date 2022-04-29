@@ -85,3 +85,6 @@
 [submodule "java/exception-handling-apache-camel-with-spring"]
 	path = java/exception-handling-apache-camel-with-spring
 	url = https://github.com/knoldus/exception-handling-apache-camel-with-spring.git
+[submodule "scala/SendGrid_Service_In_Scala"]
+	path = scala/SendGrid_Service_In_Scala
+	url = https://github.com/knoldus/SendGrid_Service_In_Scala
