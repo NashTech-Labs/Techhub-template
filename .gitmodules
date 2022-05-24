@@ -91,3 +91,7 @@
 [submodule "scala/ZIO-effect-from-scala-promise"]
 	path = scala/ZIO-effect-from-scala-promise
 	url = https://github.com/knoldus/ZIO-effect-from-scala-promise
+
+[submodule "akka/amelia-test7"]
+	path = akka/amelia-test7
+	url = https://github.com/knoldus/amelia-test7
