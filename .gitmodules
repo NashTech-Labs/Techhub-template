@@ -91,3 +91,7 @@
 [submodule "scala/ZIO-effect-from-scala-promise"]
 	path = scala/ZIO-effect-from-scala-promise
 	url = https://github.com/knoldus/ZIO-effect-from-scala-promise
+
+[submodule "scala/myOwnRepo"]
+	path = scala/myOwnRepo
+	url = https://github.com/knoldus/myOwnRepo
