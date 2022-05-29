@@ -91,3 +91,6 @@
 [submodule "scala/ZIO-effect-from-scala-promise"]
 	path = scala/ZIO-effect-from-scala-promise
 	url = https://github.com/knoldus/ZIO-effect-from-scala-promise
+[submodule "scala/JAVAX_SMTP_SERVICE_SCALA"]
+	path = scala/JAVAX_SMTP_SERVICE_SCALA
+	url = https://github.com/knoldus/JAVAX_SMTP_SERVICE_SCALA.git
