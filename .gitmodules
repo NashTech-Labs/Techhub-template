@@ -91,3 +91,6 @@
 [submodule "scala/ZIO-effect-from-scala-promise"]
 	path = scala/ZIO-effect-from-scala-promise
 	url = https://github.com/knoldus/ZIO-effect-from-scala-promise
+[submodule "scala/ExcelToJson"]
+	path = scala/ExcelToJson
+	url = https://github.com/knoldus/ExcelToJson
