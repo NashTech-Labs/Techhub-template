@@ -94,3 +94,7 @@
 [submodule "scala/ExcelToJson"]
 	path = scala/ExcelToJson
 	url = https://github.com/knoldus/ExcelToJson
+
+[submodule "scala/amelia-test12"]
+	path = scala/amelia-test12
+	url = https://github.com/knoldus/amelia-test12
