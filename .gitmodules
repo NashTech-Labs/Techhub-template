@@ -91,9 +91,27 @@
 [submodule "scala/ZIO-effect-from-scala-promise"]
 	path = scala/ZIO-effect-from-scala-promise
 	url = https://github.com/knoldus/ZIO-effect-from-scala-promise
+[submodule "scala/JAVAX_SMTP_SERVICE_SCALA"]
+	path = scala/JAVAX_SMTP_SERVICE_SCALA
+	url = https://github.com/knoldus/JAVAX_SMTP_SERVICE_SCALA
 [submodule "scala/ExcelToJson"]
 	path = scala/ExcelToJson
 	url = https://github.com/knoldus/ExcelToJson
+
 [submodule "java/apache-beam-kafka-example"]
 	path = java/apache-beam-kafka-example
 	url = git@github.com:knoldus/apache-beam-kafka-example.git
+
+[submodule "java/Spring-Security-Implementation"]
+	path = java/Spring-Security-Implementation
+	url = https://github.com/knoldus/Spring-Security-Implementation.git
+[submodule "java/kafka-avro-producer-consumer"]
+	path = java/kafka-avro-producer-consumer
+	url = https://github.com/knoldus/kafka-avro-producer-consumer.git
+[submodule "java/Demo-springboot-kafka-connect"]
+	path = java/Demo-springboot-kafka-connect
+	url = https://github.com/knoldus/Demo-springboot-kafka-connect
+[submodule "java/Springboot-rabbitMQ-demo"]
+	path = java/Springboot-rabbitMQ-demo
+	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
+
