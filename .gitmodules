@@ -109,3 +109,6 @@
 [submodule "java/Springboot-rabbitMQ-demo"]
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
+[submodule "java/Spring-Cloud-GCP-Microservices-Starter"]
+	path = java/Spring-Cloud-GCP-Microservices-Starter
+	url = https://github.com/knoldus/Spring-Cloud-GCP-Microservices-Starter.git  
