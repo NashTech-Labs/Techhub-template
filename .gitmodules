@@ -97,3 +97,6 @@
 [submodule "java/Spring-Security-Implementation"]
 	path = java/Spring-Security-Implementation
 	url = https://github.com/knoldus/Spring-Security-Implementation.git
+[submodule "java/kafka-avro-producer-consumer"]
+	path = java/kafka-avro-producer-consumer
+	url = https://github.com/knoldus/kafka-avro-producer-consumer.git
