@@ -1,0 +1,3 @@
+[submodule "Spring-Cloud-GCP-Microservices-Starter"]
+	path = Spring-Cloud-GCP-Microservices-Starter
+	url = https://github.com/knoldus/Spring-Cloud-GCP-Microservices-Starter.git
