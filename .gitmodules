@@ -94,3 +94,6 @@
 [submodule "scala/ExcelToJson"]
 	path = scala/ExcelToJson
 	url = https://github.com/knoldus/ExcelToJson
+[submodule "java/temperature-tracker"]
+	path = java/temperature-tracker
+	url = https://github.com/knoldus/temperature-tracker
