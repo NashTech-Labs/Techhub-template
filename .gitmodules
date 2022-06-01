@@ -94,3 +94,6 @@
 [submodule "scala/ExcelToJson"]
 	path = scala/ExcelToJson
 	url = https://github.com/knoldus/ExcelToJson
+[submodule "java/Spring-Security-Implementation"]
+	path = java/Spring-Security-Implementation
+	url = https://github.com/knoldus/Spring-Security-Implementation.git
