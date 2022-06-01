@@ -106,3 +106,6 @@
 [submodule "java/Demo-springboot-kafka-connect"]
 	path = java/Demo-springboot-kafka-connect
 	url = https://github.com/knoldus/Demo-springboot-kafka-connect
+[submodule "java/Springboot-rabbitMQ-demo"]
+	path = java/Springboot-rabbitMQ-demo
+	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
