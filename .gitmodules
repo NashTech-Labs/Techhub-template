@@ -109,3 +109,6 @@
 [submodule "java/Springboot-rabbitMQ-demo"]
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
+[submodule "scala/printTimeStamp"]
+	path = scala/printTimeStamp
+	url = https://github.com/knoldus/printTimeStamp
