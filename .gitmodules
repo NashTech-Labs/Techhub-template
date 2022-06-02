@@ -109,3 +109,6 @@
 [submodule "java/Springboot-rabbitMQ-demo"]
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
+[submodule "java/temperature-tracker"]
+	path = java/temperature-tracker
+	url = https://github.com/knoldus/temperature-tracker.git
