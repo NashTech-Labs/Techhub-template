@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "scala/test1101"]
+	path = scala/test1101
+	url = https://github.com/knoldus/test1101
