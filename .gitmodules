@@ -113,3 +113,6 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+[submodule "java/Kotlin-for-REST-with-MongoDB"]
+	path = java/Kotlin-for-REST-with-MongoDB
+	url = https://github.com/knoldus/Kotlin-for-REST-with-MongoDB.git
