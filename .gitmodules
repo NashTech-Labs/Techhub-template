@@ -113,3 +113,6 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+[submodule "scala/zio-custom-runtime-demo"]
+	path = scala/zio-custom-runtime-demo
+	url = https://github.com/knoldus/zio-custom-runtime-demo
