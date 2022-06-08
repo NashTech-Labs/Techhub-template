@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Retry-policy-in-apache-camel-exception."]
+	path = java/Retry-policy-in-apache-camel-exception.
+	url = https://github.com/knoldus/Retry-policy-in-apache-camel-exception.
