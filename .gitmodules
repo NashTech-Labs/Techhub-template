@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Springboot_Swagger_implementation"]
+	path = java/Springboot_Swagger_implementation
+	url = https://github.com/knoldus/Springboot_Swagger_implementation
