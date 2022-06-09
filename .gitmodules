@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Apache_Superset_Installation_Script"]
+	path = java/Apache_Superset_Installation_Script
+	url = https://github.com/knoldus/Apache_Superset_Installation_Script
