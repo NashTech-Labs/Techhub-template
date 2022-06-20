@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "angular/Dynamic-Meta-Tags-Angular"]
+	path = angular/Dynamic-Meta-Tags-Angular
+	url = https://github.com/knoldus/Dynamic-Meta-Tags-Angular
