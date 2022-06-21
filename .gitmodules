@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Apache-Camel-SpringBoot-REST-API"]
+	path = java/Apache-Camel-SpringBoot-REST-API
+	url = https://github.com/knoldus/Apache-Camel-SpringBoot-REST-API
