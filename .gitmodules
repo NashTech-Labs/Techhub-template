@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/apache-beam-kafka-example"]
+	path = java/apache-beam-kafka-example
+	url = https://github.com/knoldus/apache-beam-kafka-example
