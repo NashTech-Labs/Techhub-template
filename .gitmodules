@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Spring-Security-Implementation"]
+	path = java/Spring-Security-Implementation
+	url = https://github.com/knoldus/Spring-Security-Implementation
