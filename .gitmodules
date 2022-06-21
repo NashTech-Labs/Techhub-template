@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Basic-implementaion-of-kafka-producer-consumer"]
+	path = java/Basic-implementaion-of-kafka-producer-consumer
+	url = https://github.com/knoldus/Basic-implementaion-of-kafka-producer-consumer
