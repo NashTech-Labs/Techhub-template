@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "spark/TwitterSentimentAnalysis"]
+	path = spark/TwitterSentimentAnalysis
+	url = https://github.com/knoldus/TwitterSentimentAnalysis
