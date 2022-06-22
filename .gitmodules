@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/rabbitmq-message-producer"]
+	path = java/rabbitmq-message-producer
+	url = https://github.com/knoldus/rabbitmq-message-producer
