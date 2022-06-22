@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/kafka-connect-client"]
+	path = java/kafka-connect-client
+	url = https://github.com/knoldus/kafka-connect-client
