@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/skeleton-structure-of-kafka-connector"]
+	path = java/skeleton-structure-of-kafka-connector
+	url = https://github.com/knoldus/skeleton-structure-of-kafka-connector
