@@ -113,3 +113,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Beam_Integration_With_MongoDB"]
+	path = java/Beam_Integration_With_MongoDB
+	url = https://github.com/knoldus/Beam_Integration_With_MongoDB
