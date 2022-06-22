@@ -46,3 +46,73 @@
 [submodule "angular/drag-and-drop-in-angular"]
 	path = angular/drag-and-drop-in-angular
 	url = https://github.com/knoldus/drag-and-drop-in-angular
+[submodule "scala/Akka-Stream-Graph-DSL"]
+	path = scala/Akka-Stream-Graph-DSL
+	url = https://github.com/knoldus/Akka-Stream-Graph-DSL
+[submodule "scala/CRUD-application-using-Slick-and-MySQL"]
+	path = scala/CRUD-application-using-Slick-and-MySQL
+	url = https://github.com/knoldus/CRUD-application-using-Slick-and-MySQL.git
+[submodule "java/SpringBootWebApplication"]
+	path = java/SpringBootWebApplication
+	url = https://github.com/AnuradhaKumari201/SpringBootWebApplication.git
+[submodule "scala/Streaming-data-with-Alpakka"]
+	path = scala/Streaming-data-with-Alpakka
+	url = https://github.com/knoldus/Streaming-data-with-Alpakka
+[submodule "scala/Spark-conversion-RDD-to-Dataframe"]
+	path = scala/Spark-conversion-RDD-to-Dataframe
+	url = https://github.com/knoldus/Spark-conversion-RDD-to-Dataframe
+[submodule "angular/reactive-form-with-validation-and-reset-functionality"]
+	path = angular/reactive-form-with-validation-and-reset-functionality
+	url = https://github.com/knoldus/reactive-form-with-validation-and-reset-functionality
+[submodule "java/redshift-db-version-maintainance-with-flyway"]
+	path = java/redshift-db-version-maintainance-with-flyway
+	url = https://github.com/knoldus/redshift-db-version-maintainance-with-flyway
+[submodule "scala/Schedulers-and-Timers-in-Akka"]
+	path = scala/Schedulers-and-Timers-in-Akka
+	url = git@github.com:knoldus/Schedulers-and-Timers-in-Akka.git
+[submodule "angular/SidebarMenu"]
+	path = angular/SidebarMenu
+	url = https://github.com/knoldus/SidebarMenu
+[submodule "scala/Using-calendar-api-in-scala"]
+	path = scala/Using-calendar-api-in-scala
+	url = https://github.com/knoldus/Using-calendar-api-in-scala.git
+[submodule "scala/crud-operations-by-using-play-slick-in-scala"]
+	path = scala/crud-operations-by-using-play-slick-in-scala
+	url = https://github.com/knoldus/crud-operations-by-using-play-slick-in-scala
+[submodule "scala/resource-management-in-ZIO"]
+	path = scala/resource-management-in-ZIO
+	url = https://github.com/knoldus/resource-management-in-ZIO
+[submodule "scala/zio-basics-and-Zlayer-composition"]
+	path = scala/zio-basics-and-Zlayer-composition
+	url = https://github.com/knoldus/zio-basics-and-Zlayer-composition
+[submodule "java/exception-handling-apache-camel-with-spring"]
+	path = java/exception-handling-apache-camel-with-spring
+	url = https://github.com/knoldus/exception-handling-apache-camel-with-spring.git
+[submodule "scala/SendGrid_Service_In_Scala"]
+	path = scala/SendGrid_Service_In_Scala
+	url = https://github.com/knoldus/SendGrid_Service_In_Scala
+[submodule "scala/ZIO-effect-from-scala-promise"]
+	path = scala/ZIO-effect-from-scala-promise
+	url = https://github.com/knoldus/ZIO-effect-from-scala-promise
+[submodule "scala/JAVAX_SMTP_SERVICE_SCALA"]
+	path = scala/JAVAX_SMTP_SERVICE_SCALA
+	url = https://github.com/knoldus/JAVAX_SMTP_SERVICE_SCALA
+[submodule "scala/ExcelToJson"]
+	path = scala/ExcelToJson
+	url = https://github.com/knoldus/ExcelToJson
+[submodule "java/Spring-Security-Implementation"]
+	path = java/Spring-Security-Implementation
+	url = https://github.com/knoldus/Spring-Security-Implementation.git
+[submodule "java/kafka-avro-producer-consumer"]
+	path = java/kafka-avro-producer-consumer
+	url = https://github.com/knoldus/kafka-avro-producer-consumer.git
+[submodule "java/java-lambda-streams"]
+	path = java/java-lambda-streams
+	url = git@github.com:knoldus/java-lambda-streams.git
+[submodule "java/Demo-springboot-kafka-connect"]
+	path = java/Demo-springboot-kafka-connect
+	url = https://github.com/knoldus/Demo-springboot-kafka-connect
+[submodule "java/Springboot-rabbitMQ-demo"]
+	path = java/Springboot-rabbitMQ-demo
+	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
+
