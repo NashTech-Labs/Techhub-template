@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "angular/drag-and-drop-in-angular"]
+	path = angular/drag-and-drop-in-angular
+	url = https://github.com/knoldus/drag-and-drop-in-angular
