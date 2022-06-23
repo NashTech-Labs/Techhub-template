@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "scala/zlayer-compose"]
+	path = scala/zlayer-compose
+	url = https://github.com/knoldus/zlayer-compose
