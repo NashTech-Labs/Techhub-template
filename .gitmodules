@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/unit-testing-crud-with-spring-mongo"]
+	path = java/unit-testing-crud-with-spring-mongo
+	url = https://github.com/knoldus/unit-testing-crud-with-spring-mongo
