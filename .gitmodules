@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/REST-API-using-spring-webflux"]
+	path = java/REST-API-using-spring-webflux
+	url = https://github.com/knoldus/REST-API-using-spring-webflux
