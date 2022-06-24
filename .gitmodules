@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "angular/Mathematical_Operations_Using_NgRx-Store"]
+	path = angular/Mathematical_Operations_Using_NgRx-Store
+	url = https://github.com/knoldus/Mathematical_Operations_Using_NgRx-Store
