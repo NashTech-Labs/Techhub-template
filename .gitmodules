@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "akka/cypress.io"]
+	path = akka/cypress.io
+	url = https://github.com/knoldus/cypress.io
