@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/build_rest_webservices_using_camel"]
+	path = java/build_rest_webservices_using_camel
+	url = https://github.com/knoldus/build_rest_webservices_using_camel
