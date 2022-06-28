@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/spring-google-oauth2-login"]
+	path = java/spring-google-oauth2-login
+	url = https://github.com/knoldus/spring-google-oauth2-login
