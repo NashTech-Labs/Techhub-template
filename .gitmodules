@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/CRUD-Operations-using-Hibernate"]
+	path = java/CRUD-Operations-using-Hibernate
+	url = https://github.com/knoldus/CRUD-Operations-using-Hibernate
