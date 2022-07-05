@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/java-lambda-streams"]
+	path = java/java-lambda-streams
+	url = https://github.com/knoldus/java-lambda-streams
