@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/HashMap-Data-Structure"]
+	path = java/HashMap-Data-Structure
+	url = https://github.com/knoldus/HashMap-Data-Structure
