@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Spring-Boot-JPA-MySQL-Rest-CRUD-api"]
+	path = java/Spring-Boot-JPA-MySQL-Rest-CRUD-api
+	url = https://github.com/knoldus/Spring-Boot-JPA-MySQL-Rest-CRUD-api
