@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Multiple-User-Registration-SpringBoot"]
+	path = java/Multiple-User-Registration-SpringBoot
+	url = https://github.com/knoldus/Multiple-User-Registration-SpringBoot
