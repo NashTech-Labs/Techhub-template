@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Apache-Beam-Basic-Pipelines"]
+	path = java/Apache-Beam-Basic-Pipelines
+	url = https://github.com/knoldus/Apache-Beam-Basic-Pipelines
