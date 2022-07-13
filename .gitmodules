@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/BFS-DFS_Algorithm_in_DSA"]
+	path = java/BFS-DFS_Algorithm_in_DSA
+	url = https://github.com/knoldus/BFS-DFS_Algorithm_in_DSA
