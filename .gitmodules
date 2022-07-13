@@ -100,6 +100,11 @@
 [submodule "scala/ExcelToJson"]
 	path = scala/ExcelToJson
 	url = https://github.com/knoldus/ExcelToJson
+
+[submodule "java/apache-beam-kafka-example"]
+	path = java/apache-beam-kafka-example
+	url = git@github.com:knoldus/apache-beam-kafka-example.git
+
 [submodule "java/Spring-Security-Implementation"]
 	path = java/Spring-Security-Implementation
 	url = https://github.com/knoldus/Spring-Security-Implementation.git
