@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/SpringWebfluxDemo"]
+	path = java/SpringWebfluxDemo
+	url = https://github.com/knoldus/SpringWebfluxDemo
