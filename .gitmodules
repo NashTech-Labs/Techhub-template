@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "scala/Bank_Operations_with_KALIX"]
+	path = scala/Bank_Operations_with_KALIX
+	url = https://github.com/knoldus/Bank_Operations_with_KALIX
