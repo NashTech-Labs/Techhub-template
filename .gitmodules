@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Link-List-DSA-Examples"]
+	path = java/Link-List-DSA-Examples
+	url = https://github.com/knoldus/Link-List-DSA-Examples
