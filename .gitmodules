@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/AVL-Tree-DataStructure-Examples"]
+	path = java/AVL-Tree-DataStructure-Examples
+	url = https://github.com/knoldus/AVL-Tree-DataStructure-Examples
