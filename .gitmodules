@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "java/Spring-Boot-CRUD-Operations-perform-on-persistence-storage"]
+	path = java/Spring-Boot-CRUD-Operations-perform-on-persistence-storage
+	url = https://github.com/knoldus/Spring-Boot-CRUD-Operations-perform-on-persistence-storage
