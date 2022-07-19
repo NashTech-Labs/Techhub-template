@@ -120,3 +120,7 @@
 [submodule "scala/Bank_Operations_with_KALIX"]
 	path = scala/Bank_Operations_with_KALIX
 	url = https://github.com/knoldus/Bank_Operations_with_KALIX
+
+[submodule "java/Lowest-Common-Ancestor-In-Binary-Search-Tree"]
+	path = java/Lowest-Common-Ancestor-In-Binary-Search-Tree
+	url = https://github.com/knoldus/Lowest-Common-Ancestor-In-Binary-Search-Tree
