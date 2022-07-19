@@ -120,3 +120,7 @@
 [submodule "scala/Bank_Operations_with_KALIX"]
 	path = scala/Bank_Operations_with_KALIX
 	url = https://github.com/knoldus/Bank_Operations_with_KALIX
+
+[submodule "scala/TodoList-Kalix"]
+	path = scala/TodoList-Kalix
+	url = https://github.com/knoldus/TodoList-Kalix
