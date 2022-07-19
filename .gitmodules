@@ -116,3 +116,7 @@
 	path = java/Springboot-rabbitMQ-demo
 	url = https://github.com/knoldus/Springboot-rabbitMQ-demo
 
+
+[submodule "java/Spring-Boot-Crud-Operations-with-MySQL"]
+	path = java/Spring-Boot-Crud-Operations-with-MySQL
+	url = https://github.com/knoldus/Spring-Boot-Crud-Operations-with-MySQL
