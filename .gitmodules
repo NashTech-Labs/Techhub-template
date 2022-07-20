@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "java/RESTful-web-service-with-Spring-Webflux"]
+	path = java/RESTful-web-service-with-Spring-Webflux
+	url = https://github.com/knoldus/RESTful-web-service-with-Spring-Webflux
