@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "angular/Weather_App_in_Angular"]
+	path = angular/Weather_App_in_Angular
+	url = https://github.com/knoldus/Weather_App_in_Angular
