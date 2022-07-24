@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "java/SpringBoot-integration-with-Swagger-2"]
+	path = java/SpringBoot-integration-with-Swagger-2
+	url = https://github.com/knoldus/SpringBoot-integration-with-Swagger-2
