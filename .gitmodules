@@ -124,3 +124,6 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+[submodule "angular/FullCalendarInAngular"]
+	path = angular/FullCalendarInAngular
+	url = https://github.com/knoldus/FullCalendarInAngular
