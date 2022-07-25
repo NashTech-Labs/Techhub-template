@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "java/quarkus-api-mongodb"]
+	path = java/quarkus-api-mongodb
+	url = https://github.com/knoldus/quarkus-api-mongodb
