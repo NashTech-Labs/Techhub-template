@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "java/RabbitMQ-producer-exchange-queue"]
+	path = java/RabbitMQ-producer-exchange-queue
+	url = https://github.com/knoldus/RabbitMQ-producer-exchange-queue
