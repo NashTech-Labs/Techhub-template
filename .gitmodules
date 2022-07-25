@@ -124,3 +124,7 @@
 [submodule "scala/TodoList-Kalix"]
 	path = scala/TodoList-Kalix
 	url = https://github.com/knoldus/TodoList-Kalix
+
+[submodule "java/REST_API_Using_Spring_WebFlux"]
+	path = java/REST_API_Using_Spring_WebFlux
+	url = https://github.com/knoldus/REST_API_Using_Spring_WebFlux
