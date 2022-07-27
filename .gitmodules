@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/RabbitMQ-consumer-exchange-queue"]
+	path = java/RabbitMQ-consumer-exchange-queue
+	url = https://github.com/knoldus/RabbitMQ-consumer-exchange-queue
