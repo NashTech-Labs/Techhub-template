@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/cqrs-design-pattern-based-application"]
+	path = java/cqrs-design-pattern-based-application
+	url = https://github.com/knoldus/cqrs-design-pattern-based-application
