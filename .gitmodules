@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/Oauth-Authentication-Application-Server"]
+	path = java/Oauth-Authentication-Application-Server
+	url = https://github.com/knoldus/Oauth-Authentication-Application-Server
