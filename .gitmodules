@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/axon-framework-cqrs"]
+	path = java/axon-framework-cqrs
+	url = https://github.com/knoldus/axon-framework-cqrs
