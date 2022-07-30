@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/profiles-in-springboot"]
+	path = java/profiles-in-springboot
+	url = https://github.com/knoldus/profiles-in-springboot
