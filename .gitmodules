@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/apache-camel-producer-consumer"]
+	path = java/apache-camel-producer-consumer
+	url = https://github.com/knoldus/apache-camel-producer-consumer
