@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/juit-rest-api-application"]
+	path = java/juit-rest-api-application
+	url = https://github.com/knoldus/juit-rest-api-application
