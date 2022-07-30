@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/apache-camel-sending-files-to-activemq"]
+	path = java/apache-camel-sending-files-to-activemq
+	url = https://github.com/knoldus/apache-camel-sending-files-to-activemq
