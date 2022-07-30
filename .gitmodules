@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/Spring-Boot-SOAP-Web-Service"]
+	path = java/Spring-Boot-SOAP-Web-Service
+	url = https://github.com/knoldus/Spring-Boot-SOAP-Web-Service
