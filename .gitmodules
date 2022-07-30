@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/Spring-boot-and-Jquery-Demo"]
+	path = java/Spring-boot-and-Jquery-Demo
+	url = https://github.com/knoldus/Spring-boot-and-Jquery-Demo
