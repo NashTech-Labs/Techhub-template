@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "angular/Angular_Dependency_Injection"]
+	path = angular/Angular_Dependency_Injection
+	url = https://github.com/knoldus/Angular_Dependency_Injection
