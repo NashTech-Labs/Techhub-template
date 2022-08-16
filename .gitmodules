@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "angular/Angular-Standalone-Component"]
+	path = angular/Angular-Standalone-Component
+	url = https://github.com/knoldus/Angular-Standalone-Component
