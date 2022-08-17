@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/axon-query-handling-example"]
+	path = java/axon-query-handling-example
+	url = https://github.com/knoldus/axon-query-handling-example
