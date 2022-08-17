@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/spring-boot-crud-application"]
+	path = java/spring-boot-crud-application
+	url = https://github.com/knoldus/spring-boot-crud-application
