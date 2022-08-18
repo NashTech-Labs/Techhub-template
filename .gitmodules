@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "akka/akka-fsm-example"]
+	path = akka/akka-fsm-example
+	url = https://github.com/knoldus/akka-fsm-example
