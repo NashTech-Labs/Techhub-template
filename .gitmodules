@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "java/spring-webflux-jjwt"]
+	path = java/spring-webflux-jjwt
+	url = https://github.com/knoldus/spring-webflux-jjwt
