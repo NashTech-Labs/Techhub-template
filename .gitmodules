@@ -127,3 +127,7 @@
 [submodule "angular/FullCalendarInAngular"]
 	path = angular/FullCalendarInAngular
 	url = https://github.com/knoldus/FullCalendarInAngular
+
+[submodule "scala/Concurrency-In-ZIO"]
+	path = scala/Concurrency-In-ZIO
+	url = https://github.com/knoldus/Concurrency-In-ZIO
