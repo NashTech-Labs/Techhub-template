@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/aws-sms-tracker-using-spring-boot"]
+	path = java/aws-sms-tracker-using-spring-boot
+	url = https://github.com/knoldus/aws-sms-tracker-using-spring-boot
