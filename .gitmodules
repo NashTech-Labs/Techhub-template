@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/swagger-implement-with-REST-api"]
+	path = java/swagger-implement-with-REST-api
+	url = https://github.com/knoldus/swagger-implement-with-REST-api
