@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/boot-swagger-security"]
+	path = java/boot-swagger-security
+	url = https://github.com/knoldus/boot-swagger-security
