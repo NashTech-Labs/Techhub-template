@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/Spring-Security-Role-Based-Authorisation"]
+	path = java/Spring-Security-Role-Based-Authorisation
+	url = https://github.com/knoldus/Spring-Security-Role-Based-Authorisation
