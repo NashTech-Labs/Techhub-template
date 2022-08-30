@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/SpringWebFlux"]
+	path = java/SpringWebFlux
+	url = https://github.com/knoldus/SpringWebFlux
