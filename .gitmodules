@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/spring-webflux-reactive-with-mongo"]
+	path = java/spring-webflux-reactive-with-mongo
+	url = https://github.com/knoldus/spring-webflux-reactive-with-mongo
