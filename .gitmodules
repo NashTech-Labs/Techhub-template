@@ -131,3 +131,7 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+
+[submodule "java/Hibernate-config-with-quarkus"]
+	path = java/Hibernate-config-with-quarkus
+	url = https://github.com/knoldus/Hibernate-config-with-quarkus
