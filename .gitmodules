@@ -131,3 +131,6 @@
 [submodule "scala/Concurrency-In-ZIO"]
 	path = scala/Concurrency-In-ZIO
 	url = https://github.com/knoldus/Concurrency-In-ZIO
+[submodule "angular/Single-Sign-On-with-Angular"]
+	path = angular/Single-Sign-On-with-Angular
+	url = git@github.com:knoldus/Single-Sign-On-with-Angular.git
