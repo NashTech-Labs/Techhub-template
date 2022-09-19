@@ -134,3 +134,7 @@
 [submodule "angular/Single-Sign-On-with-Angular"]
 	path = angular/Single-Sign-On-with-Angular
 	url = git@github.com:knoldus/Single-Sign-On-with-Angular.git
+
+[submodule "java/springboot-marklogic--sample-app"]
+	path = java/springboot-marklogic--sample-app
+	url = https://github.com/knoldus/springboot-marklogic--sample-app
