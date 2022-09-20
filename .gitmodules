@@ -134,3 +134,7 @@
 [submodule "angular/Single-Sign-On-with-Angular"]
 	path = angular/Single-Sign-On-with-Angular
 	url = git@github.com:knoldus/Single-Sign-On-with-Angular.git
+
+[submodule "java/Spring-cloud-config-server"]
+	path = java/Spring-cloud-config-server
+	url = https://github.com/knoldus/Spring-cloud-config-server
