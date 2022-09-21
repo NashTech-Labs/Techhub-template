@@ -134,3 +134,7 @@
 [submodule "angular/Single-Sign-On-with-Angular"]
 	path = angular/Single-Sign-On-with-Angular
 	url = git@github.com:knoldus/Single-Sign-On-with-Angular.git
+
+[submodule "java/Spring-Transaction-Demo-with-Spring-data-JPA"]
+	path = java/Spring-Transaction-Demo-with-Spring-data-JPA
+	url = https://github.com/knoldus/Spring-Transaction-Demo-with-Spring-data-JPA
