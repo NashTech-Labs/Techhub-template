@@ -134,6 +134,6 @@
 [submodule "angular/Single-Sign-On-with-Angular"]
 	path = angular/Single-Sign-On-with-Angular
 	url = git@github.com:knoldus/Single-Sign-On-with-Angular.git
-[submodule "angular/add-to-google-calendar"]
-	path = angular/add-to-google-calendar
-	url = git@github.com:knoldus/add-to-google-calendar.git
+[submodule "angular/Single-Sign-On-with-Angular"]
+	path = angular/Single-Sign-On-with-Angular
+	url = https://github.com/knoldus/Single-Sign-On-with-Angular
