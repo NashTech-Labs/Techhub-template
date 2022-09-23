@@ -137,3 +137,7 @@
 [submodule "angular/add-to-google-calendar"]
 	path = angular/add-to-google-calendar
 	url = git@github.com:knoldus/add-to-google-calendar.git
+
+[submodule "angular/add-to-google-calendar"]
+	path = angular/add-to-google-calendar
+	url = https://github.com/knoldus/add-to-google-calendar
