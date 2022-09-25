@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "scala/Multithreading_In_Scala"]
+	path = scala/Multithreading_In_Scala
+	url = https://github.com/knoldus/Multithreading_In_Scala
