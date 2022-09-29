@@ -140,3 +140,6 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+[submodule "angular/Skeleton-loader"]
+	path = angular/Skeleton-loader
+	url = https://github.com/knoldus/Skeleton-loader.git
