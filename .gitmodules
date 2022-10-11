@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/SpringBoot-With-Liquibase-Example"]
+	path = java/SpringBoot-With-Liquibase-Example
+	url = https://github.com/knoldus/SpringBoot-With-Liquibase-Example
