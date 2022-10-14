@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/spring-boot-session-management-demo"]
+	path = java/spring-boot-session-management-demo
+	url = https://github.com/knoldus/spring-boot-session-management-demo
