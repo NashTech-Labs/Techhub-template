@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/Spring-WebFlux-With-Swagger"]
+	path = java/Spring-WebFlux-With-Swagger
+	url = https://github.com/knoldus/Spring-WebFlux-With-Swagger
