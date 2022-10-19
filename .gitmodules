@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "angular/Gifs_App_in_Angular"]
+	path = angular/Gifs_App_in_Angular
+	url = https://github.com/knoldus/Gifs_App_in_Angular
