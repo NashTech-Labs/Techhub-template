@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/springboot_hibernate_demo"]
+	path = java/springboot_hibernate_demo
+	url = https://github.com/knoldus/springboot_hibernate_demo
