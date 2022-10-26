@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/spring-data-jpa-example"]
+	path = java/spring-data-jpa-example
+	url = https://github.com/knoldus/spring-data-jpa-example
