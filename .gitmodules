@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/database_versioning_with_liquibase"]
+	path = java/database_versioning_with_liquibase
+	url = https://github.com/knoldus/database_versioning_with_liquibase
