@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/post-operation-springboot-marklogic"]
+	path = java/post-operation-springboot-marklogic
+	url = https://github.com/knoldus/post-operation-springboot-marklogic
