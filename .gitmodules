@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/mockito-unit-testing"]
+	path = java/mockito-unit-testing
+	url = https://github.com/knoldus/mockito-unit-testing
