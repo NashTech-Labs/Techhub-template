@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "akka/aws_lambda"]
+	path = akka/aws_lambda
+	url = https://github.com/knoldus/aws_lambda
