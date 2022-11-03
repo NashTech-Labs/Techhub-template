@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "akka/dcos-base-packages"]
+	path = akka/dcos-base-packages
+	url = https://github.com/knoldus/dcos-base-packages
