@@ -140,3 +140,6 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+[submodule "angular/Custom_Controls_with_CVA"]
+	path = angular/Custom_Controls_with_CVA
+	url = git@github.com:knoldus/Custom_Controls_with_CVA.git
