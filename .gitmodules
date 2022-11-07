@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "akka/delete_iam_user_using_boto3"]
+	path = akka/delete_iam_user_using_boto3
+	url = https://github.com/knoldus/delete_iam_user_using_boto3
