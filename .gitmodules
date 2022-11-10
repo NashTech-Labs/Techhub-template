@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/Spring_Integration_File_Adapter_Example"]
+	path = java/Spring_Integration_File_Adapter_Example
+	url = https://github.com/knoldus/Spring_Integration_File_Adapter_Example
