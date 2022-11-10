@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "akka/demo-tech-hub-to-check-basic-language"]
+	path = akka/demo-tech-hub-to-check-basic-language
+	url = https://github.com/knoldus/demo-tech-hub-to-check-basic-language
