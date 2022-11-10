@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "scala/TR1001"]
+	path = scala/TR1001
+	url = https://github.com/knoldus/TR1001
