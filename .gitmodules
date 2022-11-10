@@ -140,3 +140,7 @@
 [submodule "angular/Time-since-pipe"]
 	path = angular/Time-since-pipe
 	url = git@github.com:knoldus/Time-since-pipe.git
+
+[submodule "java/spring-boot-liquibase-mysql-database"]
+	path = java/spring-boot-liquibase-mysql-database
+	url = https://github.com/knoldus/spring-boot-liquibase-mysql-database
