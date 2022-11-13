@@ -143,3 +143,6 @@
 [submodule "angular/Custom_Controls_with_CVA"]
 	path = angular/Custom_Controls_with_CVA
 	url = git@github.com:knoldus/Custom_Controls_with_CVA.git
+[submodule "angular/events-and-tooltip-in-d3-using-Angular"]
+	path = angular/events-and-tooltip-in-d3-using-Angular
+	url = https://github.com/knoldus/events-and-tooltip-in-d3-using-Angular
