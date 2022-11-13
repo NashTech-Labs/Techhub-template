@@ -146,3 +146,7 @@
 [submodule "angular/events-and-tooltip-in-d3-using-Angular"]
 	path = angular/events-and-tooltip-in-d3-using-Angular
 	url = https://github.com/knoldus/events-and-tooltip-in-d3-using-Angular
+
+[submodule "angular/events-and-tooltip-in-d3-using-Angular"]
+	path = angular/events-and-tooltip-in-d3-using-Angular
+	url = https://github.com/knoldus/events-and-tooltip-in-d3-using-Angular
