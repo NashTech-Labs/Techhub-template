@@ -149,3 +149,7 @@
 [submodule "angular/Force-Simulation-d3-in-Angular"]
 	path = angular/Force-Simulation-d3-in-Angular
 	url = https://github.com/knoldus/Force-Simulation-d3-in-Angular
+
+[submodule "angular/Force-Simulation-d3-in-Angular"]
+	path = angular/Force-Simulation-d3-in-Angular
+	url = https://github.com/knoldus/Force-Simulation-d3-in-Angular
