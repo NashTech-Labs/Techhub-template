@@ -149,3 +149,6 @@
 [submodule "angular/Force-Simulation-d3-in-Angular"]
 	path = angular/Force-Simulation-d3-in-Angular
 	url = https://github.com/knoldus/Force-Simulation-d3-in-Angular
+[submodule "angular/line_chart"]
+	path = angular/line_chart
+	url = git@github.com:knoldus/line_chart.git
