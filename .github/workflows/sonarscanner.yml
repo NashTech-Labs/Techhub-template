@@ -5,8 +5,6 @@ on:
         required: true
       project_Key:
         required: true
-      sonar_token:
-        required: true
 name: Main Workflow
 jobs:
   sonarcloud:
@@ -20,7 +18,7 @@ jobs:
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ inputs.sonar_token }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       with:
         args: >
           -Dsonar.organization=${{ inputs.organization }}
