@@ -3,7 +3,11 @@ on:
     inputs:
       organization:
         required: true
-      project_Key:
+      project_key:
+        required: true
+      branch_name: 
+        required: true
+      branch_target:
         required: true
 name: Main Workflow
 jobs:
@@ -22,6 +26,8 @@ jobs:
       with:
         args: >
           -Dsonar.organization=${{ inputs.organization }}
-          -Dsonar.projectKey=${{ inputs.project_Key }}
+          -Dsonar.projectKey=${{ inputs.project_key }}
           -Dsonar.sources=.   
           -Dsonar.host.url=https://sonarcloud.io
+          -Dsonar.branch.name=${{ inputs.branch_name }}
+          -Dsonar.branch.target=${{ branch_target }}
