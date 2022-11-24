@@ -30,4 +30,4 @@ jobs:
           -Dsonar.sources=.   
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.branch.name=${{ inputs.branch_name }}
-          -Dsonar.branch.target=${{ branch_target }}
+          -Dsonar.branch.target=${{ inputs.branch_target }}
