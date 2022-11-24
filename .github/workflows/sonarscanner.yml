@@ -7,8 +7,6 @@ on:
         required: true
       branch_name: 
         required: true
-      branch_target:
-        required: true
 name: Main Workflow
 jobs:
   sonarcloud:
@@ -30,4 +28,3 @@ jobs:
           -Dsonar.sources=.   
           -Dsonar.host.url=https://sonarcloud.io
           -Dsonar.branch.name=${{ inputs.branch_name }}
-          -Dsonar.branch.target=${{ inputs.branch_target }}
