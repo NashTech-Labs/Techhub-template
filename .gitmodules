@@ -152,3 +152,7 @@
 [submodule "angular/line_chart"]
 	path = angular/line_chart
 	url = git@github.com:knoldus/line_chart.git
+
+[submodule "java/spring_integration_file_adapter_application"]
+	path = java/spring_integration_file_adapter_application
+	url = https://github.com/knoldus/spring_integration_file_adapter_application
