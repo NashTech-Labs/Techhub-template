@@ -152,3 +152,7 @@
 [submodule "angular/line_chart"]
 	path = angular/line_chart
 	url = git@github.com:knoldus/line_chart.git
+
+[submodule "angular/Introduction_of_Rxjs_Subject_BehaviorSubject_ReplaySubject_and_AsyncSubject"]
+	path = angular/Introduction_of_Rxjs_Subject_BehaviorSubject_ReplaySubject_and_AsyncSubject
+	url = https://github.com/knoldus/Introduction_of_Rxjs_Subject_BehaviorSubject_ReplaySubject_and_AsyncSubject
