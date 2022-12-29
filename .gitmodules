@@ -152,3 +152,7 @@
 [submodule "angular/line_chart"]
 	path = angular/line_chart
 	url = git@github.com:knoldus/line_chart.git
+
+[submodule "angular/Angular_Multiple_apps_on_one_page"]
+	path = angular/Angular_Multiple_apps_on_one_page
+	url = https://github.com/knoldus/Angular_Multiple_apps_on_one_page
