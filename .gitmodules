@@ -152,3 +152,7 @@
 [submodule "angular/line_chart"]
 	path = angular/line_chart
 	url = git@github.com:knoldus/line_chart.git
+
+[submodule "java/spring-boot-2-rest-service-exception-handling"]
+	path = java/spring-boot-2-rest-service-exception-handling
+	url = https://github.com/knoldus/spring-boot-2-rest-service-exception-handling
