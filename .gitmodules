@@ -152,3 +152,7 @@
 [submodule "angular/line_chart"]
 	path = angular/line_chart
 	url = git@github.com:knoldus/line_chart.git
+
+[submodule "java/springboot-integration-with-mysql"]
+	path = java/springboot-integration-with-mysql
+	url = https://github.com/knoldus/springboot-integration-with-mysql
