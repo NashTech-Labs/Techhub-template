@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/SpringBoot_Application_Configuration_with_Profiles_and_YAML"]
+	path = java/SpringBoot_Application_Configuration_with_Profiles_and_YAML
+	url = https://github.com/knoldus/SpringBoot_Application_Configuration_with_Profiles_and_YAML
