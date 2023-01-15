@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/spring-boot-rest-services-all-examples-for-springboot"]
+	path = java/spring-boot-rest-services-all-examples-for-springboot
+	url = https://github.com/knoldus/spring-boot-rest-services-all-examples-for-springboot
