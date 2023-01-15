@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/spring-boot-tutorial-soap-web-services"]
+	path = java/spring-boot-tutorial-soap-web-services
+	url = https://github.com/knoldus/spring-boot-tutorial-soap-web-services
