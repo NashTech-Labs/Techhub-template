@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/Springboot_Resilence4j_ClientApplication"]
+	path = java/Springboot_Resilence4j_ClientApplication
+	url = https://github.com/knoldus/Springboot_Resilence4j_ClientApplication
