@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/Springboot_Resilience4j_Circuitbreaker_Example"]
+	path = java/Springboot_Resilience4j_Circuitbreaker_Example
+	url = https://github.com/knoldus/Springboot_Resilience4j_Circuitbreaker_Example
