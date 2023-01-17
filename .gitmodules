@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/resilience4j-with-springboot-services-master"]
+	path = java/resilience4j-with-springboot-services-master
+	url = https://github.com/knoldus/resilience4j-with-springboot-services-master
