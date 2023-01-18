@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/java-http-client"]
+	path = java/java-http-client
+	url = https://github.com/knoldus/java-http-client
