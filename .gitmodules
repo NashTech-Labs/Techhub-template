@@ -155,3 +155,7 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+
+[submodule "java/index-page-design-using-html"]
+	path = java/index-page-design-using-html
+	url = https://github.com/knoldus/index-page-design-using-html
