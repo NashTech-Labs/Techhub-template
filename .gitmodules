@@ -155,3 +155,6 @@
 [submodule "angular/Infinite_Scroll_Angular"]
 	path = angular/Infinite_Scroll_Angular
 	url = git@github.com:knoldus/Infinite_Scroll_Angular.git
+[submodule "angular/Multi-language-support-in-Angular"]
+	path = angular/Multi-language-support-in-Angular
+	url = https://github.com/knoldus/Multi-language-support-in-Angular
