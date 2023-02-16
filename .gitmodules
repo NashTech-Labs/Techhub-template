@@ -158,3 +158,7 @@
 [submodule "angular/Multi-language-support-in-Angular"]
 	path = angular/Multi-language-support-in-Angular
 	url = https://github.com/knoldus/Multi-language-support-in-Angular
+
+[submodule "angular/integrate-keycloak-with-angular"]
+	path = angular/integrate-keycloak-with-angular
+	url = https://github.com/knoldus/integrate-keycloak-with-angular
