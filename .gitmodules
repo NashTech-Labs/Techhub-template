@@ -158,3 +158,6 @@
 [submodule "angular/Multi-language-support-in-Angular"]
 	path = angular/Multi-language-support-in-Angular
 	url = https://github.com/knoldus/Multi-language-support-in-Angular
+[submodule "angular/social-share-for-angular"]
+	path = angular/social-share-for-angular
+	url = https://github.com/knoldus/social-share-for-angular
