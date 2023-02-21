@@ -161,3 +161,7 @@
 [submodule "angular/social-share-for-angular"]
 	path = angular/social-share-for-angular
 	url = https://github.com/knoldus/social-share-for-angular
+
+[submodule "java/spring-facebook-bot-api"]
+	path = java/spring-facebook-bot-api
+	url = https://github.com/knoldus/spring-facebook-bot-api
