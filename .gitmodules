@@ -164,3 +164,6 @@
 [submodule "angular/GraphQL-in-Angular"]
 	path = angular/GraphQL-in-Angular
 	url = https://github.com/knoldus/GraphQL-in-Angular
+[submodule "angular/google-maps-in-angular"]
+	path = angular/google-maps-in-angular
+	url = https://github.com/knoldus/google-maps-in-angular
