@@ -33,7 +33,7 @@ jobs:
       # Retrieve all changed files
       - name: Get changed files
         id: changed-files
-        uses: tj-actions/changed-files@v2.0.0
+        uses: tj-actions/changed-files@v41.0.0
 
       # it gets the values of language which represents any (java, scala , angular) and project which  represents submodule directory name
       - name: Get Language & project name
